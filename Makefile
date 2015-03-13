@@ -10,4 +10,4 @@ king_me: $(OBJECTS)
 	g++ $(CFLAGS) -c $^
 
 clean:
-	rm -rf *~ *.o king_me
+	rm -rf *# *~ *.o king_me
