@@ -5,14 +5,42 @@ class BoardInterface
 {
   public:
    /**
-    * Draws the game board at the specified location.
-    *
-    * @param x - The position to start drawing the board along the x-axis.
-    * @param y - The position to start drawing the board along the y-axis.
-    * @param width - The width of the board (in pixels).
-    * @param height - The height of the board (in pixels).
+    * Draws the board.
     */
-   virtual void drawBoard(unsigned int x, unsigned int y, unsigned int width, unsigned int height)=0;
+   virtual void draw()=0;
+
+   /**
+    * Gets the position of the board along the x-axis.
+    *
+    * @return pixel count
+    */
+   virtual unsigned int getX()=0;
+
+   /**
+    * Gets the position of the board along the y-axis.
+    *
+    * @return pixel count
+    */
+   virtual unsigned int getY()=0;
+
+   /**
+    * Gets the width of the board.
+    *
+    * @return pixel count
+    */
+   virtual unsigned int getWidth()=0;
+
+   /**
+    * Gets the height of the board.
+    *
+    * @return pixel count
+    */
+   virtual unsigned int getHeight()=0;
+
+   /**
+    * Destructs the board.
+    */
+   virtual ~BoardInterface() {}
 };
 
 #endif
