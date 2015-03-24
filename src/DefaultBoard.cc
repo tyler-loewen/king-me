@@ -1,4 +1,5 @@
 #include <iostream> //TODO: Not needed
+#include <stdexcept>
 #include "DefaultBoard.h"
 
 DefaultBoard::DefaultBoard(const Display &d)
@@ -31,6 +32,11 @@ unsigned int DefaultBoard::getHeight() const
 
 void DefaultBoard::getCellDimensions(unsigned int x, unsigned int y, float &cell_x, float &cell_y, float &cell_width, float &cell_height) const
 {
+   if (x >= 8 || y >= 8)
+   {
+      throw new std::out_of_range("Cell coordinates out-of-bounds.");
+   }
+   
    cell_width = board_width / 8.0;
    cell_height = board_height / 8.0;
    
@@ -88,3 +94,12 @@ void DefaultBoard::draw() const
    }
 }
 
+void DefaultBoard::drawCellHighlight(unsigned int cell_x, unsigned int cell_y) const
+{
+   //TODO: Implement
+}
+
+void DefaultBoard::getCell(int screen_x, int screen_y, unsigned int &cell_x, unsigned int &cell_y) const
+{
+   //TODO: Implement
+}

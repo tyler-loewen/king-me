@@ -37,28 +37,35 @@ void GameSimulator::draw() const
       {
 	 for (unsigned int y = 0; y < 8; y++)
 	 {
+	    if (this->cell_data[x][y].player == NONE)
+	    {
+	       //We have nothing to draw.
+	       
+	       continue;
+	    }
+	    
+	   
+	    float cell_x;
+	    float cell_y;
+
+	    float cell_width;
+	    float cell_height;
+
+	    this->board->getCellDimensions(x, y, cell_x, cell_y, cell_width, cell_height);
+
 	    if (this->cell_data[x][y].player == PLAYER1)
 	    {
-	       float cell_x;
-	       float cell_y;
-
-	       float cell_width;
-	       float cell_height;
-
-	       this->board->getCellDimensions(x, y, cell_x, cell_y, cell_width, cell_height);
-
 	       if (this->player1_piece != NULL)
 	       {
-		  std::cout << "Draw at (" << cell_x << ", " << cell_y << ", " << cell_width << ", " << cell_height << ")" << std::endl;
-		  
 		  this->player1_piece->drawPiece(this->cell_data[x][y].is_king, (unsigned int) cell_x, (unsigned int) cell_y, (unsigned int) cell_width, (unsigned int) cell_height);
 	       }
-	    
-	       std::cout << "Draw player 1." << std::endl;
 	    }
 	    else if (this->cell_data[x][y].player == PLAYER2)
 	    {
-	       std::cout << "Draw player 2." << std::endl;
+	       if (this->player2_piece != NULL)
+	       {
+		  this->player2_piece->drawPiece(this->cell_data[x][y].is_king, (unsigned int) cell_x, (unsigned int) cell_y, (unsigned int) cell_width, (unsigned int) cell_height);
+	       }
 	    }
 	 }
       }
@@ -85,26 +92,32 @@ void GameSimulator::setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece)
 void GameSimulator::init()
 {
    //Init the pieces for the top player
-   for (unsigned int x = 0; x < 3; x++)
+   for (unsigned int x = 0; x < 8; x++)
    {
       for (unsigned int y = 0; y < 3; y++)
       {
-
+	 if (x % 2 != y % 2)
+	 {
+	    this->cell_data[x][y] = BoardCellData(PLAYER1, false);
+	 }
       }
    }
 
    //Init the pieces for the bottom player
-   for (unsigned int x = 5; x < 8; x++)
+   for (unsigned int x = 0; x < 8; x++)
    {
       for (unsigned int y = 5; y < 8; y++)
       {
-	 
+	 if (x % 2 != y % 2)
+	 {
+	    this->cell_data[x][y] = BoardCellData(PLAYER2, false);
+	 }
       }
    }
 
    //Blah. Do the above later. Let's just add a single piece to test.
 
-   this->cell_data[0][0] = BoardCellData(PLAYER1, false);
+   //this->cell_data[0][0] = BoardCellData(PLAYER1, false);
 }
 
 GameMouseListener::GameMouseListener(GameSimulator &game)
