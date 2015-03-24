@@ -17,6 +17,11 @@ class Simulator
    bool active;
 
    /**
+    * Whether the mouse is in the allegro display. True if it is; false otherwise.
+    */
+   bool mouse_in_display;
+
+   /**
     * A list of smart pointers to mouse listeners.
     */
    std::vector<std::shared_ptr<MouseListener>> mouse_listeners;

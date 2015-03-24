@@ -6,10 +6,7 @@
 #include "Simulator.h"
 #include "Display.h"
 
-//TODO: Mouse events are dispatched when the display is not in focus/in the foreground. Fix this. Might
-//      just be a xserver/xming problem though. Haven't tested on a physical machine.
-
-Simulator::Simulator(const Display &d, unsigned int fps):fps(fps),active(false)
+Simulator::Simulator(const Display &d, unsigned int fps):fps(fps),active(false),mouse_in_display(true)
 {
    if ((this->timer = al_create_timer(1.0 / fps)) == NULL)
    {
@@ -65,6 +62,13 @@ void Simulator::addMouseMotionListener(std::shared_ptr<MouseMotionListener> list
 
 void Simulator::sendToMouseListeners(const ALLEGRO_MOUSE_EVENT &e, bool pressed) const
 {
+   if (!this->mouse_in_display) //TODO: We may not capture release events if the user drags the mouse off screen. Fix this.
+   {
+      //The mouse isn't in the display. Don't send the event to the listeners.
+      
+      return;
+   }
+   
    for (unsigned int i = 0; i < this->mouse_listeners.size(); i++)
    {
       if (pressed)
@@ -80,6 +84,13 @@ void Simulator::sendToMouseListeners(const ALLEGRO_MOUSE_EVENT &e, bool pressed)
 
 void Simulator::sendToMouseMotionListeners(const ALLEGRO_MOUSE_EVENT &e) const
 {
+   if (!this->mouse_in_display)
+   {
+      //The mouse isn't in the display. Don't send the event to the listeners.
+
+      return;
+   }
+   
    if (e.dx == 0 && e.dy == 0)
    {
       //Mouse position didn't change.
@@ -136,6 +147,7 @@ void Simulator::run()
 	    break;
 	 case ALLEGRO_EVENT_DISPLAY_SWITCH_OUT:
 	    //The window is no longer active
+	    this->mouse_in_display = false;
 
 	    std::cout << "Lost focus." << std::endl;
 
@@ -145,6 +157,16 @@ void Simulator::run()
 
 	    std::cout << "Focus gained." << std::endl;
 
+	    break;
+	 case ALLEGRO_EVENT_MOUSE_ENTER_DISPLAY:
+	    //The mouse has entered the allegro display.
+	    this->mouse_in_display = true;
+	    
+	    break;
+	 case ALLEGRO_EVENT_MOUSE_LEAVE_DISPLAY:
+	    //The mouse has left the allegro display.
+	    this->mouse_in_display = false;
+	    
 	    break;
 	 default:
 	    std::cout << "Unhandled event." << std::endl;
