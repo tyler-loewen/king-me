@@ -1,3 +1,5 @@
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include "PlayerTwoPiece.h"
 
 void PlayerTwoPiece::drawPiece(bool is_king, unsigned int x, unsigned int y, unsigned int width, unsigned int height) const

@@ -4,6 +4,8 @@
 #include "Display.h"
 #include "GameSimulator.h"
 #include "DefaultBoard.h"
+#include "PlayerOnePiece.h"
+#include "PlayerTwoPiece.h"
 
 int main()
 {
@@ -16,7 +18,12 @@ int main()
 
    simulator.setBoard(board_ptr);
 
-   //TODO: Code to set the pieces
+   std::shared_ptr<PieceInterface> player1_piece = std::make_shared<PlayerOnePiece>();
+
+   std::shared_ptr<PieceInterface> player2_piece = std::make_shared<PlayerTwoPiece>();
+
+   simulator.setPlayerOnePiece(player1_piece);
+   simulator.setPlayerTwoPiece(player2_piece);
 
    simulator.run();
    

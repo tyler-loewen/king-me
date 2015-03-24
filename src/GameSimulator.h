@@ -4,6 +4,7 @@
 #include <memory>
 #include "Simulator.h"
 #include "BoardInterface.h"
+#include "PieceInterface.h"
 #include "Display.h"
 #include "MouseListener.h"
 #include "MouseMotionListener.h"
@@ -103,11 +104,35 @@ class GameSimulator : public Simulator
     * @param board - A shared pointer to the board object.
     */
    void setBoard(std::shared_ptr<BoardInterface> board);
+
+   /**
+    * Sets the piece object for player 1 (so we know how to draw player 1's pieces).
+    *
+    * Player 1 is the top player.
+    */
+   void setPlayerOnePiece(std::shared_ptr<PieceInterface> piece);
+
+   /**
+    * Sets the piece object for player 2 (so we know how to draw player 2's pieces).
+    *
+    * Player 2 is the bottom player.
+    */
+   void setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece);
   private:
    /**
     * A shared pointer to the game board.
     */
    std::shared_ptr<BoardInterface> board;
+
+   /**
+    * A shared pointer to the piece object for player 1;
+    */
+   std::shared_ptr<PieceInterface> player1_piece;
+
+   /**
+    * A shared pointer to the piece object for player 2.
+    */
+   std::shared_ptr<PieceInterface> player2_piece;
 
    /**
     * The cell data for the board.

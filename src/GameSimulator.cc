@@ -9,6 +9,8 @@ GameSimulator::GameSimulator(const Display &d, unsigned int fps):Simulator(d, fp
 
    addMouseListener(mouse_listener);
    addMouseMotionListener(mouse_motion_listener);
+
+   init();
 }
 
 GameSimulator::~GameSimulator()
@@ -23,7 +25,7 @@ void GameSimulator::update(double last_update)
 
 void GameSimulator::draw() const
 {
-   al_clear_to_color(al_map_rgb(0, 0, 0));
+   al_clear_to_color(al_map_rgb(255, 0, 0));
    
    //We must draw the board first, then the pieces, then the HUD.
    
@@ -32,12 +34,37 @@ void GameSimulator::draw() const
       this->board->draw();
    }
 
+   for (unsigned int x = 0; x < 8; x++)
+   {
+      for (unsigned int y = 0; y < 8; y++)
+      {
+	 if (this->cell_data[x][y].player == PLAYER1)
+	 {
+	    std::cout << "Draw player 1." << std::endl;
+	 }
+	 else if (this->cell_data[x][y].player == PLAYER2)
+	 {
+	    std::cout << "Draw player 2." << std::endl;
+	 }
+      }
+   }
+
    al_flip_display();
 }
 
 void GameSimulator::setBoard(std::shared_ptr<BoardInterface> board)
 {
    this->board = board;
+}
+
+void GameSimulator::setPlayerOnePiece(std::shared_ptr<PieceInterface> piece)
+{
+   this->player1_piece = piece;
+}
+
+void GameSimulator::setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece)
+{
+   this->player2_piece = piece;
 }
 
 void GameSimulator::init()
