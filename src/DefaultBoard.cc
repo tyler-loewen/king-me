@@ -107,5 +107,11 @@ void DefaultBoard::drawCellHighlight(unsigned int cell_x, unsigned int cell_y) c
 
 void DefaultBoard::getCell(int screen_x, int screen_y, unsigned int &cell_x, unsigned int &cell_y) const
 {
+   if (screen_x < this->board_pos_x || screen_y < this->board_pos_y || screen_x >= this->board_pos_x + this->board_width || screen_y >= this->board_pos_y + this->board_height)
+   {
+      //(screen_x, screen_y) is not within the bounds of the board.
+
+      throw std::out_of_range("Screen coordinates are not within the bounds of the board.");
+   }
    //TODO: Implement
 }
