@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include <allegro5/allegro.h>
+#include <string>
 
 class Display
 {
@@ -20,6 +21,11 @@ class Display
     * Height - The height of the display screen.
     */
    int height;
+
+   /**
+    * Title - The title of the display screen.
+    */
+   std::string title;
   public:
    /**
     *Display Constructor - Initializes allegro and constructs a screen of the
@@ -27,7 +33,7 @@ class Display
     *@param width - The width of the display screen.
     *@param height - The height of the display screen.
     */
-   Display(int width=800, int height=600);
+   Display(const std::string &title, int width=800, int height=600);
 
    /**
     *Display Destructor - Closes the allegro window.

@@ -1,10 +1,13 @@
 #include <iostream>
+#include <string>
 #include "Display.h"
 #include "GameSimulator.h"
 
+
 int main()
 {
-   Display display(700, 600);
+ 
+   Display display(std::string("King Me!"), 700, 600);
 
    GameSimulator simulator(display, 30);
 

@@ -4,13 +4,12 @@
 #include "Display.h"
 
 
-Display::Display(int w, int h)
+Display::Display(const std::string &t, int w, int h)
 {
    width = w;
    height = h;
-
+   title = t;
    al_init();
-   
   
    //If the display cannot be initialized, we exit.
    
@@ -20,7 +19,8 @@ Display::Display(int w, int h)
       
       exit(1);
    }
-
+   
+   al_set_window_title(this->display, title.c_str());
    al_init_primitives_addon();
 }
 
