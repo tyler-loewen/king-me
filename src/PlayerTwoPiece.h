@@ -1,9 +1,9 @@
-#ifndef DEFAULTPIECE_H
-#define DEFAULTPIECE_H
+#ifndef PLAYERTWOPIECE_H
+#define PLAYERTWOPIECE_H
 
 #include "PieceInterface.h"
 
-class DefaultPiece : public PieceInterface
+class PlayerTwoPiece : public PieceInterface
 {
   public:
    /**
@@ -12,8 +12,8 @@ class DefaultPiece : public PieceInterface
     * @param is_king - True if the piece is a "king piece"; false otherwise.
     * @param x - The position to start drawing the piece along the x-axis.
     * @param y - The position to start drawing the piece along the y-axis.
-    * @param width - The width of the board (in pixels).
-    * @param height - The height of the board (in pixels).
+    * @param width - The width of the board cell (in pixels).
+    * @param height - The height of the board cell (in pixels).
     */
    void drawPiece(bool is_king, unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
 };
