@@ -29,6 +29,15 @@ unsigned int DefaultBoard::getHeight() const
    return board_height;
 }
 
+void DefaultBoard::getCellDimensions(unsigned int x, unsigned int y, float &cell_x, float &cell_y, float &cell_width, float &cell_height) const
+{
+   cell_width = board_width / 8.0;
+   cell_height = board_height / 8.0;
+   
+   cell_x = board_pos_x + x * cell_width;
+   cell_y = board_pos_y + y * cell_height;
+}
+
 void DefaultBoard::draw() const
 {
    al_draw_rectangle(board_pos_x - 2, board_pos_y - 2, board_pos_x + board_width + 3,

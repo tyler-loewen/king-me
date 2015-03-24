@@ -47,7 +47,7 @@ class BoardInterface
     * @param cell_width - A reference to the cell width.
     * @param cell_height - A reference to the cell height.
     */
-   virtual void getCellDimensions(unsigned int x, unsigned int y, float &cell_x, float &cell_y, float &cell_width, float &cell_height);
+   virtual void getCellDimensions(unsigned int x, unsigned int y, float &cell_x, float &cell_y, float &cell_width, float &cell_height) const=0;
 
    /**
     * Destructs the board.
