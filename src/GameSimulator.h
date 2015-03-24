@@ -8,6 +8,17 @@
 #include "MouseListener.h"
 #include "MouseMotionListener.h"
 
+enum PLAYER { NONE, PLAYER1, PLAYER2 };
+
+struct BoardCellData
+{
+   PLAYER player;
+   bool is_king;
+
+   BoardCellData():player(NONE),is_king(false) {}
+   BoardCellData(PLAYER player, bool is_king):player(player),is_king(is_king) {}
+};
+
 class GameSimulator;
 
 class GameMouseListener : public MouseListener
@@ -97,6 +108,16 @@ class GameSimulator : public Simulator
     * A shared pointer to the game board.
     */
    std::shared_ptr<BoardInterface> board;
+
+   /**
+    * The cell data for the board.
+    */
+   BoardCellData cell_data[8][8];
+
+   /**
+    * Initializes the board to a an initial state.
+    */
+   void init();
 };
 
 #endif

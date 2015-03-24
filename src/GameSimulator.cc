@@ -40,6 +40,31 @@ void GameSimulator::setBoard(std::shared_ptr<BoardInterface> board)
    this->board = board;
 }
 
+void GameSimulator::init()
+{
+   //Init the pieces for the top player
+   for (unsigned int x = 0; x < 3; x++)
+   {
+      for (unsigned int y = 0; y < 3; y++)
+      {
+
+      }
+   }
+
+   //Init the pieces for the bottom player
+   for (unsigned int x = 5; x < 8; x++)
+   {
+      for (unsigned int y = 5; y < 8; y++)
+      {
+	 
+      }
+   }
+
+   //Blah. Do the above later. Let's just add a single piece to test.
+
+   this->cell_data[0][0] = BoardCellData(PLAYER1, false);
+}
+
 GameMouseListener::GameMouseListener(GameSimulator &game)
 {
    
