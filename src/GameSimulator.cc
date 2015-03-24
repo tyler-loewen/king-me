@@ -23,14 +23,16 @@ void GameSimulator::update(double last_update)
 
 void GameSimulator::draw() const
 {
+   al_clear_to_color(al_map_rgb(0, 0, 0));
+   
    //We must draw the board first, then the pieces, then the HUD.
    
    if (this->board != NULL)
-   {  
+   {
       this->board->draw();
    }
-   
-   std::cout << "Draw board" << std::endl;
+
+   al_flip_display();
 }
 
 void GameSimulator::setBoard(std::shared_ptr<BoardInterface> board)

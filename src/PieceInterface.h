@@ -13,7 +13,7 @@ class PieceInterface
     * @param width - The width of the board (in pixels).
     * @param height - The height of the board (in pixels).
     */
-   virtual void drawPiece(bool is_king, unsigned int x, unsigned int y, unsigned int width, unsigned int height)=0;
+   virtual void drawPiece(bool is_king, unsigned int x, unsigned int y, unsigned int width, unsigned int height) const=0;
 
    /**
     * Destructs the piece.

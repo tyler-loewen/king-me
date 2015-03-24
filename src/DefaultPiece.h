@@ -1,32 +1,21 @@
 #ifndef DEFAULTPIECE_H
 #define DEFAULTPIECE_H
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_primitives.h>
 
-class DefaultPiece {
+#include "PieceInterface.h"
+
+class DefaultPiece : public PieceInterface
+{
   public:
-/*
- *This is settting the colour of the piece
- */
-   int setColour;
-
-/*
- *This is setting the size of the piece (radius)
- */
-   float size;
-
-   /*
-    * This is setting a default position for the piece (X coordinate)
+   /**
+    * Draws the game piece at the specified location.
+    *
+    * @param is_king - True if the piece is a "king piece"; false otherwise.
+    * @param x - The position to start drawing the piece along the x-axis.
+    * @param y - The position to start drawing the piece along the y-axis.
+    * @param width - The width of the board (in pixels).
+    * @param height - The height of the board (in pixels).
     */
-   float xPosition;
-
-   /*
-    *This is setting a default position for the piece (Y coordinate)
-    */
-   float yPosition;
-   
-   DefaultPiece(); 
-     private:
+   void drawPiece(bool is_king, unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
 };
 
 #endif

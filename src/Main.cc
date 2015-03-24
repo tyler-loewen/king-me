@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+#include <memory>
 #include "Display.h"
 #include "GameSimulator.h"
-
+#include "DefaultBoard.h"
 
 int main()
 {
@@ -11,7 +12,11 @@ int main()
 
    GameSimulator simulator(display, 30);
 
-   //TODO: Code to set the board and pieces
+   std::shared_ptr<BoardInterface> board_ptr = std::make_shared<DefaultBoard>(display);
+
+   simulator.setBoard(board_ptr);
+
+   //TODO: Code to set the pieces
 
    simulator.run();
    

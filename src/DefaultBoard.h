@@ -6,7 +6,7 @@
 #include "BoardInterface.h"
 #include "Display.h"
 
-class DefaultBoard : BoardInterface
+class DefaultBoard : public BoardInterface
 {
   public:
    /**
@@ -21,33 +21,33 @@ class DefaultBoard : BoardInterface
     *
     * @return board_pos_x - The boards top left point on the x-axis.
     */
-   unsigned int getX();
+   unsigned int getX() const;
 
    /**
     * Returns the boards position on the y-axis.
     *
     * @return board_pos_y - The boards top left point on the y-axis.
     */
-   unsigned int getY();
+   unsigned int getY() const;
 
    /**
     * Returns the width of the board.
     *
     * @return board_width - The width of the board.
     */
-   unsigned int getWidth();
+   unsigned int getWidth() const;
 
    /**
     * Returns the height of the board.
     *
     * @return board_height - The height of the board.
     */
-   unsigned int getHeight();
+   unsigned int getHeight() const;
 
    /**
     * Draws the board on the display.
     */
-   void draw();
+   void draw() const;
   private:
    /**
     * The width of the board.
@@ -67,7 +67,7 @@ class DefaultBoard : BoardInterface
    /**
     * The boards top left point on the y-axis.
     */
-   int board_pos_y;  
+   int board_pos_y;
 };
 
 #endif
