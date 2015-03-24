@@ -4,5 +4,8 @@
 
 void PlayerTwoPiece::drawPiece(bool is_king, unsigned int x, unsigned int y, unsigned int width, unsigned int height) const
 {
-   al_draw_filled_circle(x, y, width / 2, al_map_rgb(255, 255, 0));
+   float cx = x + (width / 2.0);
+   float cy = y + (height / 2.0);
+   
+   al_draw_filled_ellipse(cx, cy, width / 2.5, height / 2.5, al_map_rgb(255, 255, 0));
 }

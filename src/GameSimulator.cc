@@ -32,19 +32,34 @@ void GameSimulator::draw() const
    if (this->board != NULL)
    {
       this->board->draw();
-   }
 
-   for (unsigned int x = 0; x < 8; x++)
-   {
-      for (unsigned int y = 0; y < 8; y++)
+      for (unsigned int x = 0; x < 8; x++)
       {
-	 if (this->cell_data[x][y].player == PLAYER1)
+	 for (unsigned int y = 0; y < 8; y++)
 	 {
-	    std::cout << "Draw player 1." << std::endl;
-	 }
-	 else if (this->cell_data[x][y].player == PLAYER2)
-	 {
-	    std::cout << "Draw player 2." << std::endl;
+	    if (this->cell_data[x][y].player == PLAYER1)
+	    {
+	       float cell_x;
+	       float cell_y;
+
+	       float cell_width;
+	       float cell_height;
+
+	       this->board->getCellDimensions(x, y, cell_x, cell_y, cell_width, cell_height);
+
+	       if (this->player1_piece != NULL)
+	       {
+		  std::cout << "Draw at (" << cell_x << ", " << cell_y << ", " << cell_width << ", " << cell_height << ")" << std::endl;
+		  
+		  this->player1_piece->drawPiece(this->cell_data[x][y].is_king, (unsigned int) cell_x, (unsigned int) cell_y, (unsigned int) cell_width, (unsigned int) cell_height);
+	       }
+	    
+	       std::cout << "Draw player 1." << std::endl;
+	    }
+	    else if (this->cell_data[x][y].player == PLAYER2)
+	    {
+	       std::cout << "Draw player 2." << std::endl;
+	    }
 	 }
       }
    }
