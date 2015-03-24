@@ -1,4 +1,3 @@
-#include <iostream> //TODO: Not needed
 #include <stdexcept>
 #include "DefaultBoard.h"
 
@@ -96,7 +95,14 @@ void DefaultBoard::draw() const
 
 void DefaultBoard::drawCellHighlight(unsigned int cell_x, unsigned int cell_y) const
 {
-   //TODO: Implement
+   float cell_pos_x = 0;
+   float cell_pos_y = 0;
+   float cell_width = 0;
+   float cell_height = 0;
+
+   getCellDimensions(cell_x, cell_y, cell_pos_x, cell_pos_y, cell_width, cell_height);
+
+   al_draw_rectangle(cell_pos_x - 1, cell_pos_y - 1, cell_pos_x + cell_width + 2, cell_pos_y + cell_height + 2, al_map_rgb(100, 100, 100), 2);
 }
 
 void DefaultBoard::getCell(int screen_x, int screen_y, unsigned int &cell_x, unsigned int &cell_y) const
