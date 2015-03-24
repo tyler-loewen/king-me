@@ -52,22 +52,22 @@ class DefaultBoard : public BoardInterface
    /**
     * The width of the board.
     */
-   int board_width;
+   unsigned int board_width;
 
    /**
     * The height of the board.
     */
-   int board_height;
+   unsigned int board_height;
 
    /**
     * The boards top left point on the x-axis.
     */
-   int board_pos_x;
+   unsigned int board_pos_x;
 
    /**
     * The boards top left point on the y-axis.
     */
-   int board_pos_y;
+   unsigned int board_pos_y;
 };
 
 #endif

@@ -31,6 +31,51 @@ unsigned int DefaultBoard::getHeight() const
 
 void DefaultBoard::draw() const
 {
-   al_draw_filled_rectangle(board_pos_x, board_pos_y, board_pos_x + board_width, board_pos_y + board_height, al_map_rgb(255, 0, 0));
+   al_draw_rectangle(board_pos_x - 2, board_pos_y - 2, board_pos_x + board_width + 3,
+		     board_pos_y + board_height + 3, al_map_rgb(255, 255, 255), 2);
+
+   float cell_width = board_width / 8.0;
+   float cell_height = board_height / 8.0;
+   
+   for (unsigned int x = 0; x < 8; x++)
+   {
+      for (unsigned int y = 0; y < 8; y++)
+      {
+	 ALLEGRO_COLOR color;
+	 
+	 if (y % 2 == 0)
+	 {
+	    if (x % 2 == 0)
+	    {
+	       //Set to white
+	       color = al_map_rgb(255, 255, 255);
+	    }
+	    else
+	    {
+	       //Set to black
+	        color = al_map_rgb(0, 0, 0);
+	    }
+	 }
+	 else
+	 {
+	    if (x % 2 == 0)
+	    {
+	       //Set to black
+	        color = al_map_rgb(0, 0, 0);
+	    }
+	    else
+	    {
+	       //Set to white
+	        color = al_map_rgb(255, 255, 255);
+	    }
+	 }
+
+	 float pos_x = board_pos_x + x * cell_width;
+	 float pos_y = board_pos_y + y * cell_height;
+
+	 al_draw_filled_rectangle(pos_x, pos_y, pos_x + cell_width, pos_y + cell_height, color);
+	 
+      }
+   }
 }
 
