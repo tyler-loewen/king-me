@@ -149,13 +149,9 @@ void Simulator::run()
 	    //The window is no longer active
 	    this->mouse_in_display = false;
 
-	    std::cout << "Lost focus." << std::endl;
-
 	    break;
 	 case ALLEGRO_EVENT_DISPLAY_SWITCH_IN:
 	    //The window is active once again
-
-	    std::cout << "Focus gained." << std::endl;
 
 	    break;
 	 case ALLEGRO_EVENT_MOUSE_ENTER_DISPLAY:

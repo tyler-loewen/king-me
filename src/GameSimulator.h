@@ -2,6 +2,7 @@
 #define GAMESIMULATOR_H
 
 #include <memory>
+#include <stdexcept>
 #include "Simulator.h"
 #include "BoardInterface.h"
 #include "PieceInterface.h"
@@ -49,6 +50,11 @@ class GameMouseListener : public MouseListener
     * @param button - The button which was released.
     */
    void mouseReleased(int x, int y, unsigned int button);
+  private:
+   /**
+    * A reference to the game simulator.
+    */
+   GameSimulator &game;
 };
 
 class GameMouseMotionListener : public MouseMotionListener
@@ -68,10 +74,17 @@ class GameMouseMotionListener : public MouseMotionListener
     * @param y - The position of the movement along the y-axis.
     */
    void mouseMoved(int x, int y);
+  private:
+   /**
+    * A reference to the game simulator.
+    */
+   GameSimulator &game;
 };
 
 class GameSimulator : public Simulator
 {
+   friend class GameMouseListener;
+   friend class GameMouseMotionListener;
   public:
    /**
     * Constructs a new game simulator with the specified fps.
@@ -140,9 +153,51 @@ class GameSimulator : public Simulator
    BoardCellData cell_data[8][8];
 
    /**
+    * Stores which cell is highlighted. If no cell is highlighted, the integers are both -1
+    */
+   int selected_cell[2];
+
+   /**
+    * The player whose turn it is.
+    */
+   PLAYER player_turn;
+
+   /**
     * Initializes the board to a an initial state.
     */
    void init();
+
+   /**
+    * Handles cell clicks. Determines if the current player can select a cell, can move to a cell, etc.
+    *
+    * @param cell_x - The x position of the cell.
+    * @param cell_y - The y position of the cell.
+    *
+    * @throws std::out_of_range - If the cell coordinates are out of bounds.
+    */
+   void clickCell(unsigned int cell_x, unsigned int cell_y);
+
+   /**
+    * Determines if the current player can select a cell. A moveable game piece belonging to the player must be
+    * on the cell for the player to be able to select it.
+    *
+    * @param cell_x - The x position of the cell.
+    * @param cell_y - The y position of the cell.
+    *
+    * @throws std::out_of_range - If the cell coordinates are out of bounds.
+    */
+   bool canSelectCell(unsigned int cell_x, unsigned int cell_y) const;
+
+   /**
+    * Determines if the current player must move a specific piece, and if he/she does, the cell coordinates will
+    * be stored in the reference parameters.
+    *
+    * @param cell_x - Reference to the x position of the cell which has a piece on it which must be moved.
+    * @param cell_y - Reference to the y position of the cell which has a piece on it which must be moved.
+    *
+    * @return bool - True if there is a move the current player must make; false otherwise.
+    */
+   bool getMustMoveCell(unsigned int &cell_x, unsigned int &cell_y) const;
 };
 
 #endif

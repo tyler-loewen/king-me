@@ -45,8 +45,8 @@ void DefaultBoard::getCellDimensions(unsigned int x, unsigned int y, float &cell
 
 void DefaultBoard::draw() const
 {
-   al_draw_rectangle(board_pos_x - 2, board_pos_y - 2, board_pos_x + board_width + 3,
-		     board_pos_y + board_height + 3, al_map_rgb(255, 255, 255), 2);
+   al_draw_rectangle(board_pos_x - 2, board_pos_y - 2, board_pos_x + board_width + 2,
+		     board_pos_y + board_height + 2, al_map_rgb(255, 255, 255), 2);
 
    float cell_width = board_width / 8.0;
    float cell_height = board_height / 8.0;
@@ -56,32 +56,14 @@ void DefaultBoard::draw() const
       for (unsigned int y = 0; y < 8; y++)
       {
 	 ALLEGRO_COLOR color;
-	 
-	 if (y % 2 == 0)
+
+	 if (x % 2 == y % 2)
 	 {
-	    if (x % 2 == 0)
-	    {
-	       //Set to white
-	       color = al_map_rgb(255, 255, 255);
-	    }
-	    else
-	    {
-	       //Set to black
-	        color = al_map_rgb(0, 0, 0);
-	    }
+	    color = al_map_rgb(255, 255, 255);
 	 }
 	 else
 	 {
-	    if (x % 2 == 0)
-	    {
-	       //Set to black
-	        color = al_map_rgb(0, 0, 0);
-	    }
-	    else
-	    {
-	       //Set to white
-	        color = al_map_rgb(255, 255, 255);
-	    }
+	    color = al_map_rgb(0, 0, 0);
 	 }
 
 	 float pos_x = board_pos_x + x * cell_width;
@@ -102,7 +84,7 @@ void DefaultBoard::drawCellHighlight(unsigned int cell_x, unsigned int cell_y) c
 
    getCellDimensions(cell_x, cell_y, cell_pos_x, cell_pos_y, cell_width, cell_height);
 
-   al_draw_rectangle(cell_pos_x - 1, cell_pos_y - 1, cell_pos_x + cell_width + 2, cell_pos_y + cell_height + 2, al_map_rgb(100, 100, 100), 2);
+   al_draw_rectangle(cell_pos_x - 1, cell_pos_y - 1, cell_pos_x + cell_width, cell_pos_y + cell_height, al_map_rgb(110, 110, 110), 3);
 }
 
 void DefaultBoard::getCell(int screen_x, int screen_y, unsigned int &cell_x, unsigned int &cell_y) const
@@ -113,5 +95,14 @@ void DefaultBoard::getCell(int screen_x, int screen_y, unsigned int &cell_x, uns
 
       throw std::out_of_range("Screen coordinates are not within the bounds of the board.");
    }
-   //TODO: Implement
+
+   //Make screen coordinates relative to the board.
+   screen_x -= this->board_pos_x;
+   screen_y -= this->board_pos_y;
+
+   float cell_width = board_width / 8.0;
+   float cell_height = board_height / 8.0;
+
+   cell_x = (unsigned int) (screen_x / cell_width);
+   cell_y = (unsigned int) (screen_y / cell_height);
 }
