@@ -33,7 +33,7 @@ void DefaultBoard::getCellDimensions(unsigned int x, unsigned int y, float &cell
 {
    if (x >= 8 || y >= 8)
    {
-      throw new std::out_of_range("Cell coordinates out-of-bounds.");
+      throw std::out_of_range("Cell coordinates out-of-bounds.");
    }
    
    cell_width = board_width / 8.0;

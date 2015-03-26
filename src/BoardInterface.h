@@ -1,6 +1,9 @@
 #ifndef BOARDINTERFACE_H
 #define BOARDINTERFACE_H
 
+/**
+ * An interface for the game board.
+ */
 class BoardInterface
 {
   public:
@@ -60,8 +63,8 @@ class BoardInterface
    /**
     * Gets the cell coordinates at a given screen coordinate. The cell coordinates are stored in the reference parameters.
     *
-    * @param mouse_x - The screen position along the x-axis.
-    * @param mouse_y - The screen position along the y axis.
+    * @param screen_x - The screen position along the x-axis.
+    * @param screen_y - The screen position along the y axis.
     * @param cell_x - Reference to the cell coordinate along the x-axis.
     * @param cell_y - Reference to the cell coordinate along the y-axis.
     */

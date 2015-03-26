@@ -8,6 +8,9 @@
 #include "MouseListener.h"
 #include "MouseMotionListener.h"
 
+/**
+ * An abstract class which simulates something renderable, with mouse listening capabilities.
+ */
 class Simulator
 {
   private:

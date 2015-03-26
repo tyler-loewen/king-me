@@ -3,6 +3,9 @@
 
 #include "PieceInterface.h"
 
+/**
+ * A default implementation of PieceInterface for player two.
+ */
 class PlayerTwoPiece : public PieceInterface
 {
   public:

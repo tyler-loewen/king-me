@@ -1,6 +1,9 @@
 #ifndef MOUSELISTENER_H
 #define MOUSELISTENER_H
 
+/**
+ * An interface for a mouse listener (listens for mouse clicks).
+ */
 class MouseListener
 {
   public:

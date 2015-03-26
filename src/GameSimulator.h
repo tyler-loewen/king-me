@@ -10,19 +10,45 @@
 #include "MouseListener.h"
 #include "MouseMotionListener.h"
 
+/**
+ * An enum for all possible players (none, player 1, and player 2).
+ */
 enum PLAYER { NONE, PLAYER1, PLAYER2 };
 
+/**
+ * A struct containing data for every cell/tile on the game board.
+ */
 struct BoardCellData
 {
+   /**
+    * The player who owns the piece which is on the cell.
+    */
    PLAYER player;
+
+   /**
+    * True if the piece on the cell is a king; false otherwise.
+    */
    bool is_king;
 
+   /**
+    * Constructs a new board cell data object with no player, and no king piece.
+    */
    BoardCellData():player(NONE),is_king(false) {}
+
+   /**
+    * Constructs a new board cell data object, with a piece on it owned by the specified player.
+    *
+    * @param player - The owner of the piece which is on the cell.
+    * @param is_king - True if the piece on the cell is a king; false otherwise.
+    */
    BoardCellData(PLAYER player, bool is_king):player(player),is_king(is_king) {}
 };
 
 class GameSimulator;
 
+/**
+ * A class used for listening to mouse clicks.
+ */
 class GameMouseListener : public MouseListener
 {
   public:
@@ -57,6 +83,9 @@ class GameMouseListener : public MouseListener
    GameSimulator &game;
 };
 
+/**
+ * A class for listening to mouse movements.
+ */
 class GameMouseMotionListener : public MouseMotionListener
 {
   public:
@@ -81,10 +110,16 @@ class GameMouseMotionListener : public MouseMotionListener
    GameSimulator &game;
 };
 
+class GameSimulatorTestFixture;
+
+/**
+ * A class for simulating a game of checkers.
+ */
 class GameSimulator : public Simulator
 {
    friend class GameMouseListener;
    friend class GameMouseMotionListener;
+   friend class GameSimulatorTestFixture;
   public:
    /**
     * Constructs a new game simulator with the specified fps.

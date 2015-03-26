@@ -6,6 +6,9 @@
 #include "BoardInterface.h"
 #include "Display.h"
 
+/**
+ * A default board for checkers.
+ */
 class DefaultBoard : public BoardInterface
 {
   public:
@@ -27,7 +30,7 @@ class DefaultBoard : public BoardInterface
     * @param cell_x - The cell coordinate along the x-axis.
     * @param cell_y - The cell coordinate along the y-axis.
     *
-    * @thorws std::out_of_range - If the cell coordinates are out of bounds.
+    * @throws std::out_of_range - If the cell coordinates are out of bounds.
     */
    void drawCellHighlight(unsigned int cell_x, unsigned int cell_y) const;
 
@@ -76,8 +79,8 @@ class DefaultBoard : public BoardInterface
    /**
     * Gets the cell coordinates at a given screen coordinate. The cell coordinates are stored in the reference parameters.
     *
-    * @param mouse_x - The screen position along the x-axis.
-    * @param mouse_y - The screen position along the y axis.
+    * @param screen_x - The screen position along the x-axis.
+    * @param screen_y - The screen position along the y axis.
     * @param cell_x - Reference to the cell coordinate along the x-axis.
     * @param cell_y - Reference to the cell coordinate along the y-axis.
     *

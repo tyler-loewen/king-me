@@ -1,6 +1,9 @@
 #ifndef MOUSEMOTIONLISTENER_H
 #define MOUSEMOTIONLISTENER_H
 
+/**
+ * An interface for a mouse motion listener (listens for mouse movements).
+ */
 class MouseMotionListener
 {
   public:

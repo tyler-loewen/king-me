@@ -1,6 +1,9 @@
 #ifndef PIECEINTERFACE_H
 #define PIECEINTERFACE_H
 
+/**
+ * An interface used for drawing pieces.
+ */
 class PieceInterface
 {
   public:
