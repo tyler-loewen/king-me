@@ -3,12 +3,15 @@
 
 #include <memory>
 #include <stdexcept>
+#include <vector>
 #include "Simulator.h"
 #include "BoardInterface.h"
 #include "PieceInterface.h"
 #include "Display.h"
 #include "MouseListener.h"
 #include "MouseMotionListener.h"
+#include "UIntPoint.h"
+#include "PieceMove.h"
 
 /**
  * An enum for all possible players (none, player 1, and player 2).
@@ -224,15 +227,20 @@ class GameSimulator : public Simulator
    bool canSelectCell(unsigned int cell_x, unsigned int cell_y) const;
 
    /**
-    * Determines if the current player must move a specific piece, and if he/she does, the cell coordinates will
-    * be stored in the reference parameters.
+    * Gets the possible moves for the given player.
     *
-    * @param cell_x - Reference to the x position of the cell which has a piece on it which must be moved.
-    * @param cell_y - Reference to the y position of the cell which has a piece on it which must be moved.
+    * @param player - The player for whom we should get the moves.
     *
-    * @return bool - True if there is a move the current player must make; false otherwise.
+    * @return A vector of the possible moves. Empty if the player is trapped.
     */
-   bool getMustMoveCell(unsigned int &cell_x, unsigned int &cell_y) const;
+   std::vector<PieceMove> getPossibleMoves(PLAYER player) const;
+
+   /**
+    * Called after a move has been made. Checks for kinging, turn changes, and victory.
+    *
+    * @param jump_made - True if a jump over an enemy piece was made; false otherwise.
+    */
+   void postMove(bool jump_made);
 };
 
 #endif

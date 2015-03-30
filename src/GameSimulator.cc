@@ -134,7 +134,7 @@ void GameSimulator::clickCell(unsigned int cell_x, unsigned int cell_y)
       throw std::out_of_range("Cell coordinates are out of bounds.");
    }
 
-   if (this->selected_cell[0] >= 0 && this->selected_cell[1] && this->cell_data[cell_x][cell_y].player != this->player_turn)
+   if (this->selected_cell[0] >= 0 && this->selected_cell[1] >= 0 && this->cell_data[cell_x][cell_y].player != this->player_turn)
    {
       //A cell is currently selected. The user is attempting to either move a piece.
       //What must happen:
@@ -146,6 +146,59 @@ void GameSimulator::clickCell(unsigned int cell_x, unsigned int cell_y)
       //   all possible jumps have been made.
 
       //Checking is a player is trapped should happen when it changes to that player's turn.
+
+      std::vector<PieceMove> possible_moves = getPossibleMoves(this->player_turn);
+
+      //Let's check if we can move to the clicked cell.
+
+      //If the current player must jump an opponent piece
+      bool must_jump = false;
+
+      for (unsigned int i = 0; i < possible_moves.size(); i++)
+      {
+	 if (possible_moves[i].jumped_pieces.size() > 0)
+	 {
+	    must_jump = true;
+
+	    break;
+	 }
+      }
+
+      for (unsigned int i = 0; i < possible_moves.size(); i++)
+      {
+	 PieceMove move = possible_moves[i];
+	 
+	 if (this->selected_cell[0] == move.start_pos.x && this->selected_cell[1] == move.start_pos.y && move.end_pos.x == cell_x && move.end_pos.y == cell_y)
+	 {
+	    //We have found a move for the clicked cell.
+
+	    if (!must_jump || possible_moves[i].jumped_pieces.size() > 0)
+	    {
+	       //Let's make the jump.
+
+	       //Remove the jumped pieces.
+	       for (unsigned int j = 0; j < move.jumped_pieces.size(); j++)
+	       {
+		  UIntPoint jumped_cell = move.jumped_pieces[j];
+
+		  this->cell_data[jumped_cell.x][jumped_cell.y] = BoardCellData();
+	       }
+
+	       BoardCellData data = this->cell_data[move.start_pos.x][move.start_pos.y];
+
+	       //Make the move.
+	       this->cell_data[move.start_pos.x][move.start_pos.y] = BoardCellData();
+	       this->cell_data[cell_x][cell_y] = data;
+
+	       this->selected_cell[0] = cell_x;
+	       this->selected_cell[1] = cell_y;
+
+	       postMove(must_jump);
+	    }
+
+	    break;
+	 }
+      }
    }
    else
    {
@@ -173,22 +226,54 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y) cons
       return false;
    }
 
-   //TODO: Check if the piece has a spot to move to.
+   std::vector<PieceMove> possible_moves = getPossibleMoves(cell_dat.player);
 
-   return true;
+   //If the current player must jump an opponent piece
+   bool must_jump = false;
+
+   for (unsigned int i = 0; i < possible_moves.size(); i++)
+   {
+      if (possible_moves[i].jumped_pieces.size() > 0)
+      {
+	 must_jump = true;
+
+	 break;
+      }
+   }
+
+   //Find the piece associated with the cell (cell_x, cell_y).
+   for (unsigned int i = 0; i < possible_moves.size(); i++)
+   {
+      if (possible_moves[i].start_pos.x == cell_x && possible_moves[i].start_pos.y == cell_y)
+      {
+	 //We have found our target piece.
+
+	 //Either we don't have to jump a piece, or the piece in question has a jump available.
+	 if (!must_jump || possible_moves[i].jumped_pieces.size() > 0)
+	 {
+	    return true;
+	 }
+      }
+   }
+
+   return false; //The piece at the given cell cannot be moved.
 }
 
-bool GameSimulator::getMustMoveCell(unsigned int &cell_x, unsigned int &cell_y) const
+std::vector<PieceMove> GameSimulator::getPossibleMoves(PLAYER player) const
 {
    //Keep in mind that PLAYER1 is the top player, and therefore must move downwards.
    //PLAYER2 is the bottom player, and therefore must move upwards. But king pieces
    //can move either up or down (diagonally, that is).
+
+   PLAYER opponent = player == PLAYER1 ? PLAYER2 : PLAYER1;
+
+   std::vector<PieceMove> moves;
    
    for (unsigned int x = 0; x < 8; x++)
    {
       for (unsigned int y = 0; y < 8; y++)
       {
-	 if (this->cell_data[x][y].player != this->player_turn)
+	 if (this->cell_data[x][y].player != player)
 	 {
 	    //This cell isn't occupied by the current player.
 
@@ -197,12 +282,168 @@ bool GameSimulator::getMustMoveCell(unsigned int &cell_x, unsigned int &cell_y) 
 
 	 //We've found a cell which is occupied by the current player. Let's check if
 	 //there are any moves which must be made.
-	 
-	 //TODO
+
+	 std::vector<int> check_y_displacement;
+
+	 if (this->cell_data[x][y].is_king)
+	 {
+	    //The piece can move either up or down
+
+	    check_y_displacement.push_back(-1);
+	    check_y_displacement.push_back(1);
+	 }
+	 else
+	 {
+	    if (player == PLAYER1)
+	    {
+	       //The piece can move down
+	       check_y_displacement.push_back(1);
+	    }
+	    else
+	    {
+	       //The piece can move up
+	       check_y_displacement.push_back(-1);
+	    }
+	 }
+
+	 for (unsigned int i = 0; i < check_y_displacement.size(); i++)
+	 {
+	    unsigned int new_y1 = y + check_y_displacement[i]; //The tile (y) to jump over or on
+	    if (new_y1 >= 8)
+	    {
+	       continue;
+	    }
+
+	    //Let's check for moves to empty spaces (no jumping pieces).
+
+	    if (x > 0)
+	    {
+	       if (this->cell_data[x - 1][new_y1].player == NONE)
+	       {
+		  UIntPoint start(x, y);
+		  UIntPoint end(x - 1, new_y1);
+
+		  moves.push_back(PieceMove(start, end));
+	       }
+	    }
+
+	    if (x < 7)
+	    {
+	       if (this->cell_data[x + 1][new_y1].player == NONE)
+	       {
+		  UIntPoint start(x, y);
+		  UIntPoint end(x + 1, new_y1);
+
+		  moves.push_back(PieceMove(start, end));
+	       }
+	    }
+	    
+	    //Let's check for piece jumps.
+	    
+	    unsigned int new_y2 = y + check_y_displacement[i] * 2; //The tile (y) to land on
+	    if (new_y2 >= 8)
+	    {
+	       //We don't have to check for negatives since new_y is unsigned.
+	       
+	       continue;
+	    }
+	    
+	    if (x > 1)
+	    {
+	       if (this->cell_data[x - 1][new_y1].player == opponent && this->cell_data[x - 2][new_y2].player == NONE)
+	       {
+		  //Found a jump to the left
+
+		  UIntPoint start(x, y);
+		  UIntPoint end(x - 2, new_y2);
+
+		  PieceMove move(start, end);
+
+		  move.jumped_pieces.push_back(UIntPoint(x - 1, new_y1));
+
+		  moves.push_back(move);
+	       }
+	    }
+
+	    if (x < 7)
+	    {
+	       if (this->cell_data[x + 1][new_y1].player == opponent && this->cell_data[x + 2][new_y2].player == NONE)
+	       {
+		  //Found a jump to the right
+
+		  UIntPoint start(x, y);
+		  UIntPoint end(x + 2, new_y2);
+
+		  PieceMove move(start, end);
+
+		  move.jumped_pieces.push_back(UIntPoint(x + 1, new_y1));
+
+		  moves.push_back(move);
+	       }
+	    }
+	 }
       }
    }
+
+   return moves;
+}
+
+void GameSimulator::postMove(bool jump_made)
+{
+   //Check for kinging.
+   unsigned int king_row = this->player_turn == PLAYER1 ? 7 : 0;
+   for (unsigned int x = 0; x < 8; x++)
+   {
+      if (this->cell_data[x][king_row].player == this->player_turn)
+      {
+	 this->cell_data[x][king_row].is_king = true;
+      }
+   }
+
+   std::vector<PieceMove> possible_moves = getPossibleMoves(this->player_turn);
    
-   return false;
+   //Check if the current player still has jumps which must be made.
+   bool must_jump = false;
+
+   if (jump_made)
+   {
+      for (unsigned int i = 0; i < possible_moves.size(); i++)
+      {
+	 //Find the piece we just used for the jump.
+	 if (possible_moves[i].start_pos.x != this->selected_cell[0] || possible_moves[i].start_pos.y != this->selected_cell[1])
+	 {
+	    continue;
+	 }
+
+	 //We've found the piece we just used for the jump. Now let's check if we can do further jumps with it.
+      
+	 if (possible_moves[i].jumped_pieces.size() > 0)
+	 {
+	    must_jump = true;
+
+	    break;
+	 }
+      }
+   }
+
+   if (!must_jump || !jump_made)
+   {
+      if (this->player_turn == PLAYER1)
+      {
+	 this->player_turn = PLAYER2;
+      }
+      else
+      {
+	 this->player_turn = PLAYER1;
+      }
+
+      this->selected_cell[0] = this->selected_cell[1] = -1;
+
+      if (getPossibleMoves(this->player_turn).size() == 0)
+      {
+	 std::cout << "VICTORY!" << std::endl;
+      }
+   }
 }
 
 GameMouseListener::GameMouseListener(GameSimulator &game):game(game)
