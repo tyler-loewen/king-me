@@ -17,7 +17,9 @@ class DefaultBoard : public BoardInterface
     *
     * @param d - The display size used to create the board.
     */
-   DefaultBoard(const Display &d);
+   DefaultBoard(const Display &d, unsigned char tile1_r = 255, unsigned char tile1_g = 255,
+		unsigned char tile1_b = 255, unsigned char tile2_r = 0,
+		unsigned char tile2_g = 0, unsigned char tile2_b = 0);
 
    /**
     * Draws the board on the display.
@@ -107,6 +109,36 @@ class DefaultBoard : public BoardInterface
     * The boards top left point on the y-axis.
     */
    unsigned int board_pos_y;
+
+   /**
+    * The amount of red colour of the first board tile.
+    */
+   unsigned char tile1_red;
+   
+   /**
+    * The amount of blue colour of the first board tile.
+    */
+   unsigned char tile1_blue;
+    
+   /**
+    * The amount of green colour of the first board tile.
+    */
+   unsigned char tile1_green;
+    
+   /**
+    * The amount of red colour of the second board tile.
+    */
+   unsigned char tile2_red;
+    
+   /**
+    * The amount of blue colour of the second board tile.
+    */
+   unsigned char tile2_blue;
+    
+   /**
+    * The amount of green colour of the second board tile.
+    */
+   unsigned char tile2_green;  
 };
 
 #endif

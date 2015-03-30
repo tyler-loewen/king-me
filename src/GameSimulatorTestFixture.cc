@@ -28,7 +28,7 @@ void GameSimulatorTestFixture::setUp()
 
    this->display = new Display(std::string("King Me! - Test"), 700, 600);
    this->simulator = new GameSimulator(*(this->display), 30);
-   this->board = std::make_shared<DefaultBoard>(*(this->display));
+   this->board = std::make_shared<DefaultBoard>(*(this->display), 255, 255, 255, 0, 0, 0);
    this->simulator->setBoard(this->board);
 }
 

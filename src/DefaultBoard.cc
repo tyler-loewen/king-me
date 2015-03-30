@@ -1,13 +1,12 @@
 #include <stdexcept>
 #include "DefaultBoard.h"
 
-DefaultBoard::DefaultBoard(const Display &d)
-{
-   board_width = d.getWidth() - 60;
-   board_height = d.getHeight() - 60;
-   board_pos_x = 30;
-   board_pos_y = 30;
-}
+DefaultBoard::DefaultBoard(const Display &d, unsigned char tile1_r, unsigned char tile1_g,
+			   unsigned char tile1_b, unsigned char tile2_r, unsigned char tile2_g,
+			   unsigned char tile2_b)
+   : board_width (d.getWidth() - 60), board_height(d.getHeight() - 60), board_pos_x(30),
+     board_pos_y(30), tile1_red(tile1_r), tile1_blue(tile1_b), tile1_green(tile1_g),
+     tile2_red(tile2_r), tile2_blue(tile2_b), tile2_green(tile2_g) {}
 
 unsigned int DefaultBoard::getX() const
 {
@@ -59,11 +58,11 @@ void DefaultBoard::draw() const
 
 	 if (x % 2 == y % 2)
 	 {
-	    color = al_map_rgb(255, 255, 255);
+	    color = al_map_rgb(tile1_red, tile1_green, tile1_blue);
 	 }
 	 else
 	 {
-	    color = al_map_rgb(0, 0, 0);
+	    color = al_map_rgb(tile2_red, tile2_green, tile2_blue);
 	 }
 
 	 float pos_x = board_pos_x + x * cell_width;
