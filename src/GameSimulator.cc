@@ -10,8 +10,8 @@ GameSimulator::GameSimulator(const Display &d, unsigned int fps):Simulator(d, fp
    addMouseListener(mouse_listener);
    addMouseMotionListener(mouse_motion_listener);
 
-   this->selected_cell[0] = -1;
-   this->selected_cell[1] = -1;
+   this->selected_cell[0] = this->selected_cell[1] = -1;
+   this->must_move_cell[0] = this->must_move_cell[1] = -1;
 
    init();
 }
@@ -217,6 +217,11 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y) cons
       throw std::out_of_range("Cell coordinates are out of bounds.");
    }
 
+   if (this->must_move_cell[0] >= 0 && this->must_move_cell[1] >= 0)
+   {
+      return this->must_move_cell[0] == cell_x && this->must_move_cell[1] == cell_y;
+   }
+
    BoardCellData cell_dat = this->cell_data[cell_x][cell_y];
 
    if (cell_dat.player != this->player_turn)
@@ -365,7 +370,7 @@ std::vector<PieceMove> GameSimulator::getPossibleMoves(PLAYER player) const
 	       }
 	    }
 
-	    if (x < 7)
+	    if (x < 6)
 	    {
 	       if (this->cell_data[x + 1][new_y1].player == opponent && this->cell_data[x + 2][new_y2].player == NONE)
 	       {
@@ -426,6 +431,17 @@ void GameSimulator::postMove(bool jump_made)
       }
    }
 
+   if (must_jump)
+   {
+   this->must_move_cell[0] = this->selected_cell[0];
+   this->must_move_cell[1] = this->selected_cell[1];
+   }
+   else
+   {
+      this->must_move_cell[0];
+      this->must_move_cell[1];
+   }
+
    if (!must_jump || !jump_made)
    {
       if (this->player_turn == PLAYER1)
@@ -438,11 +454,17 @@ void GameSimulator::postMove(bool jump_made)
       }
 
       this->selected_cell[0] = this->selected_cell[1] = -1;
+      this->must_move_cell[0] = this->must_move_cell[1] = -1;
 
       if (getPossibleMoves(this->player_turn).size() == 0)
       {
 	 std::cout << "VICTORY!" << std::endl;
       }
+   }
+   else
+   {
+      this->must_move_cell[0] = this->selected_cell[0];
+      this->must_move_cell[1] = this->selected_cell[1];
    }
 }
 
