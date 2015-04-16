@@ -11,13 +11,10 @@ class SelectedCellHighlight : public HighlightCellInterface
     * 
     * @param x - Inputs the X value (x-axis).
     * @param y - Inputs the Y value (y-axis).
-    * @param height - Inputs the height. 
     * @param width - Inputs the width.
+    * @param height - Inputs the height. 
     */
-   void draw(float x, float y, float height, float width);
-
-   
-
+   void draw(float x, float y, float width, float height);
 };
 
 #endif

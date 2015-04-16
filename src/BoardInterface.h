@@ -13,14 +13,6 @@ class BoardInterface
    virtual void draw() const=0;
 
    /**
-    * Draws the highlight for a cell with the given cell coordinates.
-    *
-    * @param cell_x - The cell coordinate along the x-axis.
-    * @param cell_y - The cell coordinate along the y-axis.
-    */
-   virtual void drawCellHighlight(unsigned int cell_x, unsigned int cell_y) const=0;
-
-   /**
     * Gets the position of the board along the x-axis.
     *
     * @return pixel count

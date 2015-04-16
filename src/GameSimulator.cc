@@ -73,12 +73,21 @@ void GameSimulator::draw() const
 	 }
       }
 
-      if (this->selected_cell[0] >= 0 && this->selected_cell[1] >= 0)
+      if (this->selected_cell[0] >= 0 && this->selected_cell[1] >= 0 && this->selected_cell_highlight != NULL)
       {
 	 //A cell has been selected by the player. We can assume the cell coordinates are within bounds since we do the checks
 	 //when we set the variable.
 
-	 this->board->drawCellHighlight(this->selected_cell[0], this->selected_cell[1]);
+	 //this->board->drawCellHighlight(this->selected_cell[0], this->selected_cell[1]);
+
+	 float cell_pos_x = 0;
+	 float cell_pos_y = 0;
+	 float cell_width = 0;
+	 float cell_height = 0;
+
+	 this->board->getCellDimensions(this->selected_cell[0], this->selected_cell[1], cell_pos_x, cell_pos_y, cell_width, cell_height);
+
+	 this->selected_cell_highlight->draw(cell_pos_x, cell_pos_y, cell_width, cell_height);
       }
 
       if (this->hud != NULL)
@@ -108,6 +117,11 @@ void GameSimulator::setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece)
 void GameSimulator::setHUD(std::shared_ptr<HUDInterface> hud)
 {
    this->hud = hud;
+}
+
+void GameSimulator::setSelectedCellHighlight(std::shared_ptr<HighlightCellInterface> highlight)
+{
+   this->selected_cell_highlight = highlight;
 }
 
 void GameSimulator::init()

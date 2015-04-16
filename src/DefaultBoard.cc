@@ -69,21 +69,8 @@ void DefaultBoard::draw() const
 	 float pos_y = board_pos_y + y * cell_height;
 
 	 al_draw_filled_rectangle(pos_x, pos_y, pos_x + cell_width, pos_y + cell_height, color);
-	 
       }
    }
-}
-
-void DefaultBoard::drawCellHighlight(unsigned int cell_x, unsigned int cell_y) const
-{
-   float cell_pos_x = 0;
-   float cell_pos_y = 0;
-   float cell_width = 0;
-   float cell_height = 0;
-
-   getCellDimensions(cell_x, cell_y, cell_pos_x, cell_pos_y, cell_width, cell_height);
-
-   al_draw_rectangle(cell_pos_x - 1, cell_pos_y - 1, cell_pos_x + cell_width, cell_pos_y + cell_height, al_map_rgb(110, 110, 110), 3);
 }
 
 void DefaultBoard::getCell(int screen_x, int screen_y, unsigned int &cell_x, unsigned int &cell_y) const

@@ -1,4 +1,4 @@
-#ifndef HIGHTLIGHTCELLINTERFACE_H
+#ifndef HIGHLIGHTCELLINTERFACE_H
 #define HIGHLIGHTCELLINTERFACE_H
 
 class HighlightCellInterface
@@ -9,10 +9,10 @@ class HighlightCellInterface
     * 
     * @param x - Inputs the X value (x-axis).
     * @param y - Inputs the Y value (y-axis).
-    * @param height - Inputs the height.
     * @param width - Inputs the width.
+    * @param height - Inputs the height.
     */
-   virtual void draw(float x, float y, float height, float width) = 0;
+   virtual void draw(float x, float y, float width, float height) = 0;
    /**
     * Destructs the the HighlightCellInterface.
     */

@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include "GameSimulator.h"
 #include "BoardInterface.h"
+#include "HighlightCellInterface.h"
 
 /**
  * A class used for testing the checkers game simulator.
@@ -15,8 +16,6 @@ class GameSimulatorTestFixture : public CppUnit::TestFixture
    CPPUNIT_TEST_SUITE(GameSimulatorTestFixture);
    CPPUNIT_TEST(testClickCell);
    CPPUNIT_TEST_EXCEPTION(testClickCellOutOfBounds, std::out_of_range);
-   CPPUNIT_TEST(testDrawCellHighlight);
-   CPPUNIT_TEST_EXCEPTION(testDrawCellHighlightOutOfBounds, std::out_of_range);
    CPPUNIT_TEST_SUITE_END();
    
   public:
@@ -41,16 +40,6 @@ class GameSimulatorTestFixture : public CppUnit::TestFixture
     * Tests a cell click with illegal inputs. This should result in an std::out_of_range exception.
     */
    void testClickCellOutOfBounds();
-
-   /**
-    * Tests drawing a cell highlight with legal inputs. This should not result in any exceptions.
-    */
-   void testDrawCellHighlight();
-
-   /**
-    * Tests drawing a cell highlight with illegal inputs. This should result in an std::out_of_range exception.
-    */
-   void testDrawCellHighlightOutOfBounds();
   private:
    /**
     * Pointer to the display object used in every test case.
@@ -66,6 +55,11 @@ class GameSimulatorTestFixture : public CppUnit::TestFixture
     * Smart pointer to the board object used in every test case.
     */
    std::shared_ptr<BoardInterface> board;
+
+   /**
+    * Smart pointer to the selected sell highlighter.
+    */
+   std::shared_ptr<HighlightCellInterface> selected_cell_highlight;
 };
 
 #endif

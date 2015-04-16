@@ -13,6 +13,7 @@
 #include "UIntPoint.h"
 #include "PieceMove.h"
 #include "HUDInterface.h"
+#include "HighlightCellInterface.h"
 
 /**
  * An enum for all possible players (none, player 1, and player 2).
@@ -161,6 +162,8 @@ class GameSimulator : public Simulator
     * Sets the piece object for player 1 (so we know how to draw player 1's pieces).
     *
     * Player 1 is the top player.
+    *
+    * @param piece - Shared pointer to the piece drawer.
     */
    void setPlayerOnePiece(std::shared_ptr<PieceInterface> piece);
 
@@ -168,13 +171,24 @@ class GameSimulator : public Simulator
     * Sets the piece object for player 2 (so we know how to draw player 2's pieces).
     *
     * Player 2 is the bottom player.
+    *
+    * @param piece - Shared pointer to the piece drawer.
     */
    void setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece);
 
    /**
     * Sets the HUD drawer.
+    *
+    * @param hud - Shared pointer to the HUD drawer.
     */
    void setHUD(std::shared_ptr<HUDInterface> hud);
+
+   /**
+    * Sets the selected cell highlight.
+    *
+    * @param highlight - Shared pointer to the cell highlighter.
+    */
+   void setSelectedCellHighlight(std::shared_ptr<HighlightCellInterface> highlight);
   private:
    /**
     * Constant reference to the display.
@@ -200,6 +214,11 @@ class GameSimulator : public Simulator
     * A shared pointer to the HUD drawer.
     */
    std::shared_ptr<HUDInterface> hud;
+
+   /**
+    * A shared pointer to the selected cell highlighter.
+    */
+   std::shared_ptr<HighlightCellInterface> selected_cell_highlight;
 
    /**
     * The cell data for the board.

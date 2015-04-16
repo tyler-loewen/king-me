@@ -27,16 +27,6 @@ class DefaultBoard : public BoardInterface
    void draw() const;
 
    /**
-    * Draws the highlight for a cell with the given cell coordinates.
-    *
-    * @param cell_x - The cell coordinate along the x-axis.
-    * @param cell_y - The cell coordinate along the y-axis.
-    *
-    * @throws std::out_of_range - If the cell coordinates are out of bounds.
-    */
-   void drawCellHighlight(unsigned int cell_x, unsigned int cell_y) const;
-
-   /**
     * Returns the boards position on the x-axis.
     *
     * @return board_pos_x - The boards top left point on the x-axis.
