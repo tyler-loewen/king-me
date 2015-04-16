@@ -14,7 +14,7 @@ class Display
     * Display pointer - Points to the current display.
     */
    ALLEGRO_DISPLAY *display;
-
+   ALLEGRO_BITMAP *icon;
    /**
     * Width - The width of the display screen.
     */

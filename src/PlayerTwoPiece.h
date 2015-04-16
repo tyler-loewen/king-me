@@ -14,6 +14,10 @@ class PlayerTwoPiece : public PieceInterface
     */
   PlayerTwoPiece(unsigned char player2_r = 255, unsigned char player2_g = 255,
 		 unsigned char player2_b = 0);
+   /**
+    * Destructs the PlayerOne Piece
+    */
+   ~PlayerTwoPiece();
    
    /**
     * Draws the game piece at the specified location.
@@ -40,6 +44,11 @@ class PlayerTwoPiece : public PieceInterface
    * Amount of blue in the player two pieces.
    */
   unsigned char player2_blue;
+
+   /**
+    * Creates a bitmap to store the crown image
+    */
+   ALLEGRO_BITMAP *crown;
 };
 
 #endif
