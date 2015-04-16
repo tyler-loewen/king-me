@@ -12,6 +12,7 @@
 #include "MouseMotionListener.h"
 #include "UIntPoint.h"
 #include "PieceMove.h"
+#include "HUDInterface.h"
 
 /**
  * An enum for all possible players (none, player 1, and player 2).
@@ -169,7 +170,17 @@ class GameSimulator : public Simulator
     * Player 2 is the bottom player.
     */
    void setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece);
+
+   /**
+    * Sets the HUD drawer.
+    */
+   void setHUD(std::shared_ptr<HUDInterface> hud);
   private:
+   /**
+    * Constant reference to the display.
+    */
+   const Display &d;
+   
    /**
     * A shared pointer to the game board.
     */
@@ -184,6 +195,11 @@ class GameSimulator : public Simulator
     * A shared pointer to the piece object for player 2.
     */
    std::shared_ptr<PieceInterface> player2_piece;
+
+   /**
+    * A shared pointer to the HUD drawer.
+    */
+   std::shared_ptr<HUDInterface> hud;
 
    /**
     * The cell data for the board.

@@ -8,6 +8,7 @@
 #include "PlayerOnePiece.h"
 #include "PlayerTwoPiece.h"
 #include "GameSimulatorTestFixture.h"
+#include "DefaultHUD.h"
 
 int main()
 {
@@ -18,7 +19,10 @@ int main()
 
    std::shared_ptr<BoardInterface> board_ptr = std::make_shared<DefaultBoard>(display);
 
+   std::shared_ptr<HUDInterface> hud_ptr = std::make_shared<DefaultHUD>();
+
    simulator->setBoard(board_ptr);
+   simulator->setHUD(hud_ptr);
 
    std::shared_ptr<PieceInterface> player1_piece = std::make_shared<PlayerOnePiece>();
 

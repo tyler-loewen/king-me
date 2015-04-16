@@ -2,7 +2,7 @@
 #include "GameSimulator.h"
 #include "Display.h"
 
-GameSimulator::GameSimulator(const Display &d, unsigned int fps):Simulator(d, fps),player_turn(PLAYER1)
+GameSimulator::GameSimulator(const Display &d, unsigned int fps):Simulator(d, fps),d(d),player_turn(PLAYER1)
 {
    std::shared_ptr<MouseListener> mouse_listener = std::make_shared<GameMouseListener>(*this);
    std::shared_ptr<MouseMotionListener> mouse_motion_listener = std::make_shared<GameMouseMotionListener>(*this);
@@ -80,6 +80,11 @@ void GameSimulator::draw() const
 
 	 this->board->drawCellHighlight(this->selected_cell[0], this->selected_cell[1]);
       }
+
+      if (this->hud != NULL)
+      {
+	 this->hud->draw(this->d.getWidth(), this->d.getHeight(), std::string("STATUS"), std::string("PLAYER"), 0);
+      }
    }
 
    al_flip_display();
@@ -98,6 +103,11 @@ void GameSimulator::setPlayerOnePiece(std::shared_ptr<PieceInterface> piece)
 void GameSimulator::setPlayerTwoPiece(std::shared_ptr<PieceInterface> piece)
 {
    this->player2_piece = piece;
+}
+
+void GameSimulator::setHUD(std::shared_ptr<HUDInterface> hud)
+{
+   this->hud = hud;
 }
 
 void GameSimulator::init()
