@@ -1,8 +1,7 @@
 CFLAGS = -I /home/lib2720/allegro5/include/ -std=c++0x
 LIBDIR = /home/lib2720/allegro5/lib/
-LNFLAGS = -lallegro -lallegro_primitives -lcppunit -ldl
 OBJECTS = DefaultHUD.o Main.o Simulator.o GameSimulator.o Display.o DefaultBoard.o PlayerOnePiece.o PlayerTwoPiece.o GameSimulatorTestFixture.o SelectedCellHighlight.o
-LNFLAGS = -lallegro -lallegro_primitives -lallegro_image -lcppunit -ldl
+LNFLAGS = -lallegro -lallegro_primitives -lallegro_image -lcppunit -ldl -lallegro_font -lallegro_ttf
 
 king_me: $(OBJECTS)
 	g++ -L $(LIBDIR) -o $@ $^ $(LNFLAGS) 
