@@ -37,15 +37,15 @@ int main()
 
    simulator->run();
 
-   std::cout << "Initializing tests." << std::endl;
+   //std::cout << "Initializing tests." << std::endl;
 
-   CppUnit::TextUi::TestRunner runner;
+   //CppUnit::TextUi::TestRunner runner;
 
-   runner.addTest(GameSimulatorTestFixture::suite());
+   //runner.addTest(GameSimulatorTestFixture::suite());
 
-   std::cout << "Test suite constructed. Running tests." << std::endl;
+   //std::cout << "Test suite constructed. Running tests." << std::endl;
    
-   runner.run();
+   //runner.run();
    
    return 0;
 }

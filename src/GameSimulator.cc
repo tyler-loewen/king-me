@@ -2,7 +2,7 @@
 #include "GameSimulator.h"
 #include "Display.h"
 
-GameSimulator::GameSimulator(const Display &d, unsigned int fps):Simulator(d, fps),d(d),player_turn(PLAYER1)
+GameSimulator::GameSimulator(const Display &d, unsigned int fps):Simulator(d, fps),d(d),player_turn(PLAYER1),status("Please make a move."),player1_pieces_captured(0),player2_pieces_captured(0)
 {
    std::shared_ptr<MouseListener> mouse_listener = std::make_shared<GameMouseListener>(*this);
    std::shared_ptr<MouseMotionListener> mouse_motion_listener = std::make_shared<GameMouseMotionListener>(*this);
@@ -92,7 +92,22 @@ void GameSimulator::draw() const
 
       if (this->hud != NULL)
       {
-	 this->hud->draw(this->d.getWidth(), this->d.getHeight(), std::string("STATUS"), std::string("PLAYER"), 0);
+	 std::string player_name;
+
+	 if (this->player_turn == PLAYER1)
+	 {
+	    player_name += "Player 1 (Top)";
+	 }
+	 else if (this->player_turn == PLAYER2)
+	 {
+	    player_name += "Player 2 (Bottom)";
+	 }
+	 else
+	 {
+	    player_name = "None";
+	 }
+	 
+	 this->hud->draw(this->d.getWidth(), this->d.getHeight(), this->status, player_name, this->player_turn == PLAYER1 ? this->player1_pieces_captured : this->player_turn == PLAYER2 ? this->player2_pieces_captured : 0);
       }
    }
 
@@ -234,7 +249,7 @@ void GameSimulator::clickCell(unsigned int cell_x, unsigned int cell_y)
    }
 }
 
-bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y) const
+bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y)
 {
    if (cell_x >= 8 || cell_y >= 8)
    {
@@ -243,6 +258,8 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y) cons
 
    if (this->must_move_cell[0] >= 0 && this->must_move_cell[1] >= 0)
    {
+      status = "There is a move that must be made.";
+      
       return this->must_move_cell[0] == cell_x && this->must_move_cell[1] == cell_y;
    }
 
@@ -251,6 +268,8 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y) cons
    if (cell_dat.player != this->player_turn)
    {
       //The piece at this cell is not owned by the current player (or there is no piece there).
+
+      this->status = "This isn't our piece.";
       
       return false;
    }
@@ -283,6 +302,11 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y) cons
 	    return true;
 	 }
       }
+   }
+
+   if (must_jump)
+   {
+      this->status = "There is a jump that must be made.";
    }
 
    return false; //The piece at the given cell cannot be moved.
@@ -419,6 +443,18 @@ std::vector<PieceMove> GameSimulator::getPossibleMoves(PLAYER player) const
 
 void GameSimulator::postMove(bool jump_made)
 {
+   if (jump_made)
+   {
+      if (this->player_turn == PLAYER1)
+      {
+	 this->player1_pieces_captured++;
+      }
+      else if (this->player_turn == PLAYER2)
+      {
+	 this->player2_pieces_captured++;
+      }
+   }
+   
    //Check for kinging.
    unsigned int king_row = this->player_turn == PLAYER1 ? 7 : 0;
    for (unsigned int x = 0; x < 8; x++)
@@ -477,18 +513,32 @@ void GameSimulator::postMove(bool jump_made)
 	 this->player_turn = PLAYER1;
       }
 
+      this->status = "Please make a move.";
+
       this->selected_cell[0] = this->selected_cell[1] = -1;
       this->must_move_cell[0] = this->must_move_cell[1] = -1;
 
       if (getPossibleMoves(this->player_turn).size() == 0)
       {
-	 std::cout << "VICTORY!" << std::endl;
+	 //Notice: The turn has switched to the loser.
+	 if (player_turn == PLAYER1)
+	 {
+	    this->status = std::string("VICTORY FOR PLAYER 2!");
+	 }
+	 else
+	 {
+	    this->status = std::string("VICTORY FOR PLAYER 1!");
+	 }
+
+	 this->player_turn = NONE;
       }
    }
    else
    {
       this->must_move_cell[0] = this->selected_cell[0];
       this->must_move_cell[1] = this->selected_cell[1];
+
+      this->status = "We must continue jumping.";
    }
 }
 

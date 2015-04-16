@@ -241,6 +241,21 @@ class GameSimulator : public Simulator
    PLAYER player_turn;
 
    /**
+    * The current status of the game.
+    */
+   std::string status;
+
+   /**
+    * The number of pieces player 1 has captured.
+    */
+   unsigned int player1_pieces_captured;
+
+   /**
+    * The number of pieces player 2 has captured.
+    */
+   unsigned int player2_pieces_captured;
+
+   /**
     * Initializes the board to a an initial state.
     */
    void init();
@@ -264,7 +279,7 @@ class GameSimulator : public Simulator
     *
     * @throws std::out_of_range - If the cell coordinates are out of bounds.
     */
-   bool canSelectCell(unsigned int cell_x, unsigned int cell_y) const;
+   bool canSelectCell(unsigned int cell_x, unsigned int cell_y);
 
    /**
     * Gets the possible moves for the given player.
