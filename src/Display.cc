@@ -20,9 +20,7 @@ Display::Display(const std::string &t, int w, int h)
       
       exit(1);
    }
-
-   
-   ALLEGRO_BITMAP *icon = NULL;
+  
    icon = al_load_bitmap("img/CrownIcon.png");
    al_set_window_title(this->display, title.c_str());
    al_set_display_icon(this->display, icon);
@@ -32,4 +30,5 @@ Display::Display(const std::string &t, int w, int h)
 Display::~Display()
 {
    al_destroy_display(display);
+   al_destroy_bitmap(icon);
 }
