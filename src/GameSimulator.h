@@ -191,9 +191,14 @@ class GameSimulator : public Simulator
    BoardCellData cell_data[8][8];
 
    /**
-    * Stores which cell is highlighted. If no cell is highlighted, the integers are both -1
+    * Stores which cell is highlighted. If no cell is highlighted, the integers are both -1.
     */
    int selected_cell[2];
+
+   /**
+    * Stores which cell has to be moved. If the user isn't being forced to move the piece at a specific cell, the integers are both -1.
+    */
+   int must_move_cell[2];
 
    /**
     * The player whose turn it is.
