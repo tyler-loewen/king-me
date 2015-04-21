@@ -7,7 +7,6 @@
 #include "DefaultBoard.h"
 #include "PlayerOnePiece.h"
 #include "PlayerTwoPiece.h"
-#include "GameSimulatorTestFixture.h"
 #include "DefaultHUD.h"
 #include "SelectedCellHighlight.h"
 #include "DefaultRuleSet.h"
@@ -40,16 +39,6 @@ int main()
    simulator->setPlayerTwoPiece(player2_piece);
 
    simulator->run();
-
-   //std::cout << "Initializing tests." << std::endl;
-
-   //CppUnit::TextUi::TestRunner runner;
-
-   //runner.addTest(GameSimulatorTestFixture::suite());
-
-   //std::cout << "Test suite constructed. Running tests." << std::endl;
-   
-   //runner.run();
    
    return 0;
 }
