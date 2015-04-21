@@ -1,0 +1,268 @@
+CCCC_Module@ALLEGRO_MOUSE_EVENT@@
+CCCC_Module@AlternateBoard@@
+CCCC_Module@AlternateCellHighlight@@
+CCCC_Module@AlternateHUD@@
+CCCC_Module@AlternatePlayerOnePiece@@
+CCCC_Module@AlternatePlayerTwoPiece@@
+CCCC_Module@AlternateRuleSet@@
+CCCC_Module@DefaultBoard@@
+CCCC_Module@DefaultHUD@@
+CCCC_Module@DefaultRuleSet@@
+CCCC_Module@Display@@
+CCCC_Module@GameMouseListener@@
+CCCC_Module@GameMouseMotionListener@@
+CCCC_Module@GameSimulator@@
+CCCC_Module@GameSimulatorTestFixture@@
+CCCC_Module@PLAYER@@
+CCCC_Module@PlayerOnePiece@@
+CCCC_Module@PlayerTwoPiece@@
+CCCC_Module@SelectedCellHighlight@@
+CCCC_Module@Simulator@@
+CCCC_Module@anonymous@@
+CCCC_Module@bool@@
+CCCC_Module@char@builtin@
+CCCC_ModExt@char@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@double@builtin@
+CCCC_ModExt@double@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@float@builtin@
+CCCC_ModExt@float@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@int@builtin@
+CCCC_ModExt@int@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@long@builtin@
+CCCC_ModExt@long@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@shared_ptr@@
+CCCC_Module@string@@
+CCCC_Module@void@builtin@
+CCCC_ModExt@void@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Member@AlternateBoard@AlternateBoard@@(const Display &,char,char,char,char,char,char)@
+CCCC_MemExt@AlternateBoard@AlternateBoard@@(const Display &,char,char,char,char,char,char)@../src/AlternateBoard.cc@4@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@AlternateBoard@draw@@()@
+CCCC_MemExt@AlternateBoard@draw@@()@../src/AlternateBoard.cc@45@definition@T????@LOC:25 COM:0 MVG:3@?@d@
+CCCC_Member@AlternateBoard@getCell@@(int,int,int &,int &)@
+CCCC_MemExt@AlternateBoard@getCell@@(int,int,int &,int &)@../src/AlternateBoard.cc@76@definition@T????@LOC:13 COM:2 MVG:4@?@d@
+CCCC_Member@AlternateBoard@getCellDimensions@@(int,int,float &,float &,float &,float &)@
+CCCC_MemExt@AlternateBoard@getCellDimensions@@(int,int,float &,float &,float &,float &)@../src/AlternateBoard.cc@31@definition@T????@LOC:11 COM:0 MVG:2@?@d@
+CCCC_Member@AlternateBoard@getHeight@@()@
+CCCC_MemExt@AlternateBoard@getHeight@@()@../src/AlternateBoard.cc@26@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@AlternateBoard@getWidth@@()@
+CCCC_MemExt@AlternateBoard@getWidth@@()@../src/AlternateBoard.cc@21@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@AlternateBoard@getX@@()@
+CCCC_MemExt@AlternateBoard@getX@@()@../src/AlternateBoard.cc@11@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@AlternateBoard@getY@@()@
+CCCC_MemExt@AlternateBoard@getY@@()@../src/AlternateBoard.cc@16@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@AlternateCellHighlight@draw@@(float,float,float,float)@
+CCCC_MemExt@AlternateCellHighlight@draw@@(float,float,float,float)@../src/AlternateCellHighlight.cc@5@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@AlternateHUD@AlternateHUD@@()@
+CCCC_MemExt@AlternateHUD@AlternateHUD@@()@../src/AlternateHUD.cc@8@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@AlternateHUD@draw@@(int,int,string,string,int)@
+CCCC_MemExt@AlternateHUD@draw@@(int,int,string,string,int)@../src/AlternateHUD.cc@21@definition@F????@LOC:10 COM:0 MVG:0@?@d@
+CCCC_Member@AlternateHUD@~AlternateHUD@@()@
+CCCC_MemExt@AlternateHUD@~AlternateHUD@@()@../src/AlternateHUD.cc@16@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@AlternatePlayerOnePiece@AlternatePlayerOnePiece@@(char,char,char)@
+CCCC_MemExt@AlternatePlayerOnePiece@AlternatePlayerOnePiece@@(char,char,char)@../src/AlternatePlayerOnePiece.cc@6@definition@F????@LOC:6 COM:1 MVG:0@?@d@
+CCCC_Member@AlternatePlayerOnePiece@drawPiece@@(bool,int,int,int,int)@
+CCCC_MemExt@AlternatePlayerOnePiece@drawPiece@@(bool,int,int,int,int)@../src/AlternatePlayerOnePiece.cc@14@definition@T????@LOC:18 COM:0 MVG:1@?@d@
+CCCC_Member@AlternatePlayerOnePiece@~AlternatePlayerOnePiece@@()@
+CCCC_MemExt@AlternatePlayerOnePiece@~AlternatePlayerOnePiece@@()@../src/AlternatePlayerOnePiece.cc@35@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@AlternatePlayerTwoPiece@AlternatePlayerTwoPiece@@(char,char,char)@
+CCCC_MemExt@AlternatePlayerTwoPiece@AlternatePlayerTwoPiece@@(char,char,char)@../src/AlternatePlayerTwoPiece.cc@5@definition@F????@LOC:6 COM:1 MVG:0@?@d@
+CCCC_Member@AlternatePlayerTwoPiece@drawPiece@@(bool,int,int,int,int)@
+CCCC_MemExt@AlternatePlayerTwoPiece@drawPiece@@(bool,int,int,int,int)@../src/AlternatePlayerTwoPiece.cc@13@definition@T????@LOC:18 COM:0 MVG:1@?@d@
+CCCC_Member@AlternatePlayerTwoPiece@~AlternatePlayerTwoPiece@@()@
+CCCC_MemExt@AlternatePlayerTwoPiece@~AlternatePlayerTwoPiece@@()@../src/AlternatePlayerTwoPiece.cc@34@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@AlternateRuleSet@canMoveBackwards@@(PLAYER,bool,bool)@
+CCCC_MemExt@AlternateRuleSet@canMoveBackwards@@(PLAYER,bool,bool)@../src/AlternateRuleSet.cc@10@definition@F????@LOC:4 COM:1 MVG:1@?@d@
+CCCC_Member@AlternateRuleSet@mustMakeJumps@@(PLAYER,bool)@
+CCCC_MemExt@AlternateRuleSet@mustMakeJumps@@(PLAYER,bool)@../src/AlternateRuleSet.cc@3@definition@F????@LOC:4 COM:1 MVG:1@?@d@
+CCCC_Member@DefaultBoard@DefaultBoard@@(const Display &,char,char,char,char,char,char)@
+CCCC_MemExt@DefaultBoard@DefaultBoard@@(const Display &,char,char,char,char,char,char)@../src/DefaultBoard.cc@4@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@DefaultBoard@draw@@()@
+CCCC_MemExt@DefaultBoard@draw@@()@../src/DefaultBoard.cc@45@definition@T????@LOC:25 COM:0 MVG:3@?@d@
+CCCC_Member@DefaultBoard@getCell@@(int,int,int &,int &)@
+CCCC_MemExt@DefaultBoard@getCell@@(int,int,int &,int &)@../src/DefaultBoard.cc@76@definition@T????@LOC:13 COM:2 MVG:4@?@d@
+CCCC_Member@DefaultBoard@getCellDimensions@@(int,int,float &,float &,float &,float &)@
+CCCC_MemExt@DefaultBoard@getCellDimensions@@(int,int,float &,float &,float &,float &)@../src/DefaultBoard.cc@31@definition@T????@LOC:11 COM:0 MVG:2@?@d@
+CCCC_Member@DefaultBoard@getHeight@@()@
+CCCC_MemExt@DefaultBoard@getHeight@@()@../src/DefaultBoard.cc@26@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@DefaultBoard@getWidth@@()@
+CCCC_MemExt@DefaultBoard@getWidth@@()@../src/DefaultBoard.cc@21@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@DefaultBoard@getX@@()@
+CCCC_MemExt@DefaultBoard@getX@@()@../src/DefaultBoard.cc@11@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@DefaultBoard@getY@@()@
+CCCC_MemExt@DefaultBoard@getY@@()@../src/DefaultBoard.cc@16@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@DefaultHUD@DefaultHUD@@()@
+CCCC_MemExt@DefaultHUD@DefaultHUD@@()@../src/DefaultHUD.cc@8@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@DefaultHUD@draw@@(int,int,string,string,int)@
+CCCC_MemExt@DefaultHUD@draw@@(int,int,string,string,int)@../src/DefaultHUD.cc@21@definition@F????@LOC:10 COM:0 MVG:0@?@d@
+CCCC_Member@DefaultHUD@~DefaultHUD@@()@
+CCCC_MemExt@DefaultHUD@~DefaultHUD@@()@../src/DefaultHUD.cc@16@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@DefaultRuleSet@canMoveBackwards@@(PLAYER,bool,bool)@
+CCCC_MemExt@DefaultRuleSet@canMoveBackwards@@(PLAYER,bool,bool)@../src/DefaultRuleSet.cc@10@definition@F????@LOC:4 COM:1 MVG:1@?@d@
+CCCC_Member@DefaultRuleSet@mustMakeJumps@@(PLAYER,bool)@
+CCCC_MemExt@DefaultRuleSet@mustMakeJumps@@(PLAYER,bool)@../src/DefaultRuleSet.cc@3@definition@F????@LOC:4 COM:1 MVG:1@?@d@
+CCCC_Member@Display@Display@@(const string &,int,int)@
+CCCC_MemExt@Display@Display@@(const string &,int,int)@../src/Display.cc@8@definition@F????@LOC:17 COM:1 MVG:1@?@d@
+CCCC_Member@Display@~Display@@()@
+CCCC_MemExt@Display@~Display@@()@../src/Display.cc@30@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@GameMouseListener@GameMouseListener@@(GameSimulator &)@
+CCCC_MemExt@GameMouseListener@GameMouseListener@@(GameSimulator &)@../src/GameSimulator.cc@585@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@GameMouseListener@mousePressed@@(int,int,int)@
+CCCC_MemExt@GameMouseListener@mousePressed@@(int,int,int)@../src/GameSimulator.cc@590@definition@F????@LOC:17 COM:1 MVG:1@?@d@
+CCCC_Member@GameMouseListener@mouseReleased@@(int,int,int)@
+CCCC_MemExt@GameMouseListener@mouseReleased@@(int,int,int)@../src/GameSimulator.cc@612@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@GameMouseMotionListener@GameMouseMotionListener@@(GameSimulator &)@
+CCCC_MemExt@GameMouseMotionListener@GameMouseMotionListener@@(GameSimulator &)@../src/GameSimulator.cc@617@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@GameMouseMotionListener@mouseMoved@@(int,int)@
+CCCC_MemExt@GameMouseMotionListener@mouseMoved@@(int,int)@../src/GameSimulator.cc@622@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@GameSimulator@@(const Display &,int)@
+CCCC_MemExt@GameSimulator@GameSimulator@@(const Display &,int)@../src/GameSimulator.cc@5@definition@F????@LOC:10 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@canSelectCell@@(int,int)@
+CCCC_MemExt@GameSimulator@canSelectCell@@(int,int)@../src/GameSimulator.cc@262@definition@F????@LOC:51 COM:8 MVG:22@?@d@
+CCCC_Member@GameSimulator@clickCell@@(int,int)@
+CCCC_MemExt@GameSimulator@clickCell@@(int,int)@../src/GameSimulator.cc@174@definition@F????@LOC:54 COM:15 MVG:19@?@d@
+CCCC_Member@GameSimulator@draw@@()@
+CCCC_MemExt@GameSimulator@draw@@()@../src/GameSimulator.cc@29@definition@T????@LOC:64 COM:5 MVG:16@?@d@
+CCCC_Member@GameSimulator@getPossibleMoves@@(PLAYER)@
+CCCC_MemExt@GameSimulator@getPossibleMoves@@(PLAYER)@../src/GameSimulator.cc@338@definition@T????@LOC:93 COM:21 MVG:25@?@d@
+CCCC_Member@GameSimulator@init@@()@
+CCCC_MemExt@GameSimulator@init@@()@../src/GameSimulator.cc@147@definition@F????@LOC:23 COM:2 MVG:6@?@d@
+CCCC_Member@GameSimulator@postMove@@(bool)@
+CCCC_MemExt@GameSimulator@postMove@@(bool)@../src/GameSimulator.cc@484@definition@F????@LOC:81 COM:5 MVG:18@?@d@
+CCCC_Member@GameSimulator@setBoard@@(shared_ptr)@
+CCCC_MemExt@GameSimulator@setBoard@@(shared_ptr)@../src/GameSimulator.cc@117@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@setHUD@@(shared_ptr)@
+CCCC_MemExt@GameSimulator@setHUD@@(shared_ptr)@../src/GameSimulator.cc@132@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@setPlayerOnePiece@@(shared_ptr)@
+CCCC_MemExt@GameSimulator@setPlayerOnePiece@@(shared_ptr)@../src/GameSimulator.cc@122@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@setPlayerTwoPiece@@(shared_ptr)@
+CCCC_MemExt@GameSimulator@setPlayerTwoPiece@@(shared_ptr)@../src/GameSimulator.cc@127@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@setRuleSet@@(shared_ptr)@
+CCCC_MemExt@GameSimulator@setRuleSet@@(shared_ptr)@../src/GameSimulator.cc@137@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@setSelectedCellHighlight@@(shared_ptr)@
+CCCC_MemExt@GameSimulator@setSelectedCellHighlight@@(shared_ptr)@../src/GameSimulator.cc@142@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@update@@(double)@
+CCCC_MemExt@GameSimulator@update@@(double)@../src/GameSimulator.cc@24@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulator@~GameSimulator@@()@
+CCCC_MemExt@GameSimulator@~GameSimulator@@()@../src/GameSimulator.cc@19@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulatorTestFixture@setUp@@()@
+CCCC_MemExt@GameSimulatorTestFixture@setUp@@()@../src/GameSimulatorTestFixture.cc@26@definition@F????@LOC:9 COM:1 MVG:0@?@d@
+CCCC_Member@GameSimulatorTestFixture@tearDown@@()@
+CCCC_MemExt@GameSimulatorTestFixture@tearDown@@()@../src/GameSimulatorTestFixture.cc@38@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulatorTestFixture@testClickCell@@()@
+CCCC_MemExt@GameSimulatorTestFixture@testClickCell@@()@../src/GameSimulatorTestFixture.cc@49@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulatorTestFixture@testClickCellOutOfBounds@@()@
+CCCC_MemExt@GameSimulatorTestFixture@testClickCellOutOfBounds@@()@../src/GameSimulatorTestFixture.cc@54@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@GameSimulatorTestFixture@~GameSimulatorTestFixture@@()@
+CCCC_MemExt@GameSimulatorTestFixture@~GameSimulatorTestFixture@@()@../src/GameSimulatorTestFixture.cc@7@definition@F????@LOC:14 COM:0 MVG:2@?@d@
+CCCC_Member@PlayerOnePiece@PlayerOnePiece@@(char,char,char)@
+CCCC_MemExt@PlayerOnePiece@PlayerOnePiece@@(char,char,char)@../src/PlayerOnePiece.cc@6@definition@F????@LOC:6 COM:1 MVG:0@?@d@
+CCCC_Member@PlayerOnePiece@drawPiece@@(bool,int,int,int,int)@
+CCCC_MemExt@PlayerOnePiece@drawPiece@@(bool,int,int,int,int)@../src/PlayerOnePiece.cc@14@definition@T????@LOC:18 COM:0 MVG:1@?@d@
+CCCC_Member@PlayerOnePiece@~PlayerOnePiece@@()@
+CCCC_MemExt@PlayerOnePiece@~PlayerOnePiece@@()@../src/PlayerOnePiece.cc@35@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@PlayerTwoPiece@PlayerTwoPiece@@(char,char,char)@
+CCCC_MemExt@PlayerTwoPiece@PlayerTwoPiece@@(char,char,char)@../src/PlayerTwoPiece.cc@5@definition@F????@LOC:6 COM:1 MVG:0@?@d@
+CCCC_Member@PlayerTwoPiece@drawPiece@@(bool,int,int,int,int)@
+CCCC_MemExt@PlayerTwoPiece@drawPiece@@(bool,int,int,int,int)@../src/PlayerTwoPiece.cc@13@definition@T????@LOC:18 COM:0 MVG:1@?@d@
+CCCC_Member@PlayerTwoPiece@~PlayerTwoPiece@@()@
+CCCC_MemExt@PlayerTwoPiece@~PlayerTwoPiece@@()@../src/PlayerTwoPiece.cc@34@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@SelectedCellHighlight@draw@@(float,float,float,float)@
+CCCC_MemExt@SelectedCellHighlight@draw@@(float,float,float,float)@../src/SelectedCellHighlight.cc@5@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Simulator@Simulator@@(const Display &,int)@
+CCCC_MemExt@Simulator@Simulator@@(const Display &,int)@../src/Simulator.cc@9@definition@F????@LOC:17 COM:1 MVG:2@?@d@
+CCCC_Member@Simulator@addMouseListener@@(shared_ptr)@
+CCCC_MemExt@Simulator@addMouseListener@@(shared_ptr)@../src/Simulator.cc@53@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Simulator@addMouseMotionListener@@(shared_ptr)@
+CCCC_MemExt@Simulator@addMouseMotionListener@@(shared_ptr)@../src/Simulator.cc@58@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Simulator@run@@()@
+CCCC_MemExt@Simulator@run@@()@../src/Simulator.cc@107@definition@F????@LOC:53 COM:7 MVG:16@?@d@
+CCCC_Member@Simulator@sendToMouseListeners@@(const ALLEGRO_MOUSE_EVENT &,bool)@
+CCCC_MemExt@Simulator@sendToMouseListeners@@(const ALLEGRO_MOUSE_EVENT &,bool)@../src/Simulator.cc@63@definition@T????@LOC:18 COM:2 MVG:4@?@d@
+CCCC_Member@Simulator@sendToMouseMotionListeners@@(const ALLEGRO_MOUSE_EVENT &)@
+CCCC_MemExt@Simulator@sendToMouseMotionListeners@@(const ALLEGRO_MOUSE_EVENT &)@../src/Simulator.cc@85@definition@T????@LOC:15 COM:2 MVG:6@?@d@
+CCCC_Member@Simulator@~Simulator@@()@
+CCCC_MemExt@Simulator@~Simulator@@()@../src/Simulator.cc@33@definition@F????@LOC:15 COM:0 MVG:2@?@d@
+CCCC_Member@anonymous@main@@()@
+CCCC_MemExt@anonymous@main@@()@../src/AlternateMain.cc@14@definition@F????@LOC:19 COM:0 MVG:1@?@d@
+CCCC_MemExt@anonymous@main@@()@../src/Main.cc@14@definition@F????@LOC:19 COM:0 MVG:1@?@d@
+CCCC_MemExt@anonymous@main@@()@../src/TestMain.cc@5@definition@F????@LOC:9 COM:0 MVG:1@?@d@
+CCCC_UseRel@Display@AlternateBoard@
+CCCC_UseExt@Display@AlternateBoard@../src/AlternateBoard.cc@4@pass by reference@?????@*@?@p@
+CCCC_UseRel@string@AlternateHUD@
+CCCC_UseExt@string@AlternateHUD@../src/AlternateHUD.cc@21@pass by value@F????@*@?@P@
+CCCC_UseExt@string@AlternateHUD@../src/AlternateHUD.cc@21@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@AlternatePlayerOnePiece@
+CCCC_UseExt@bool@AlternatePlayerOnePiece@../src/AlternatePlayerOnePiece.cc@14@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@AlternatePlayerTwoPiece@
+CCCC_UseExt@bool@AlternatePlayerTwoPiece@../src/AlternatePlayerTwoPiece.cc@13@pass by value@F????@*@?@P@
+CCCC_UseRel@PLAYER@AlternateRuleSet@
+CCCC_UseExt@PLAYER@AlternateRuleSet@../src/AlternateRuleSet.cc@3@pass by value@?????@*@?@P@
+CCCC_UseExt@PLAYER@AlternateRuleSet@../src/AlternateRuleSet.cc@10@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@AlternateRuleSet@
+CCCC_UseExt@bool@AlternateRuleSet@../src/AlternateRuleSet.cc@3@pass by value@?????@*@?@P@
+CCCC_UseExt@bool@AlternateRuleSet@../src/AlternateRuleSet.cc@10@pass by value@F????@*@?@P@
+CCCC_UseExt@bool@AlternateRuleSet@../src/AlternateRuleSet.cc@10@pass by value@F????@*@?@P@
+CCCC_UseRel@Display@DefaultBoard@
+CCCC_UseExt@Display@DefaultBoard@../src/DefaultBoard.cc@4@pass by reference@?????@*@?@p@
+CCCC_UseRel@string@DefaultHUD@
+CCCC_UseExt@string@DefaultHUD@../src/DefaultHUD.cc@21@pass by value@F????@*@?@P@
+CCCC_UseExt@string@DefaultHUD@../src/DefaultHUD.cc@21@pass by value@F????@*@?@P@
+CCCC_UseRel@PLAYER@DefaultRuleSet@
+CCCC_UseExt@PLAYER@DefaultRuleSet@../src/DefaultRuleSet.cc@3@pass by value@?????@*@?@P@
+CCCC_UseExt@PLAYER@DefaultRuleSet@../src/DefaultRuleSet.cc@10@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@DefaultRuleSet@
+CCCC_UseExt@bool@DefaultRuleSet@../src/DefaultRuleSet.cc@3@pass by value@?????@*@?@P@
+CCCC_UseExt@bool@DefaultRuleSet@../src/DefaultRuleSet.cc@10@pass by value@F????@*@?@P@
+CCCC_UseExt@bool@DefaultRuleSet@../src/DefaultRuleSet.cc@10@pass by value@F????@*@?@P@
+CCCC_UseRel@string@Display@
+CCCC_UseExt@string@Display@../src/Display.cc@8@pass by reference@?????@*@?@p@
+CCCC_UseRel@GameSimulator@GameMouseListener@
+CCCC_UseExt@GameSimulator@GameMouseListener@../src/GameSimulator.cc@585@pass by reference@F????@*@?@p@
+CCCC_UseRel@GameSimulator@GameMouseMotionListener@
+CCCC_UseExt@GameSimulator@GameMouseMotionListener@../src/GameSimulator.cc@617@pass by reference@F????@*@?@p@
+CCCC_UseRel@Display@GameSimulator@
+CCCC_UseExt@Display@GameSimulator@../src/GameSimulator.cc@5@pass by reference@?????@*@?@p@
+CCCC_UseRel@PLAYER@GameSimulator@
+CCCC_UseExt@PLAYER@GameSimulator@../src/GameSimulator.cc@338@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@GameSimulator@
+CCCC_UseExt@bool@GameSimulator@../src/GameSimulator.cc@484@pass by value@T????@*@?@P@
+CCCC_UseRel@shared_ptr@GameSimulator@
+CCCC_UseExt@shared_ptr@GameSimulator@../src/GameSimulator.cc@117@pass by value@T????@*@?@P@
+CCCC_UseExt@shared_ptr@GameSimulator@../src/GameSimulator.cc@122@pass by value@F????@*@?@P@
+CCCC_UseExt@shared_ptr@GameSimulator@../src/GameSimulator.cc@127@pass by value@F????@*@?@P@
+CCCC_UseExt@shared_ptr@GameSimulator@../src/GameSimulator.cc@132@pass by value@F????@*@?@P@
+CCCC_UseExt@shared_ptr@GameSimulator@../src/GameSimulator.cc@137@pass by value@F????@*@?@P@
+CCCC_UseExt@shared_ptr@GameSimulator@../src/GameSimulator.cc@142@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@PlayerOnePiece@
+CCCC_UseExt@bool@PlayerOnePiece@../src/PlayerOnePiece.cc@14@pass by value@F????@*@?@P@
+CCCC_UseRel@bool@PlayerTwoPiece@
+CCCC_UseExt@bool@PlayerTwoPiece@../src/PlayerTwoPiece.cc@13@pass by value@F????@*@?@P@
+CCCC_UseRel@ALLEGRO_MOUSE_EVENT@Simulator@
+CCCC_UseExt@ALLEGRO_MOUSE_EVENT@Simulator@../src/Simulator.cc@63@pass by reference@F????@*@?@p@
+CCCC_UseExt@ALLEGRO_MOUSE_EVENT@Simulator@../src/Simulator.cc@85@pass by reference@T????@*@?@p@
+CCCC_UseRel@Display@Simulator@
+CCCC_UseExt@Display@Simulator@../src/Simulator.cc@9@pass by reference@?????@*@?@p@
+CCCC_UseRel@bool@Simulator@
+CCCC_UseExt@bool@Simulator@../src/Simulator.cc@63@pass by value@F????@*@?@P@
+CCCC_UseRel@shared_ptr@Simulator@
+CCCC_UseExt@shared_ptr@Simulator@../src/Simulator.cc@53@pass by value@F????@*@?@P@
+CCCC_UseExt@shared_ptr@Simulator@../src/Simulator.cc@58@pass by value@F????@*@?@P@
+CCCC_RejExt@../src/AlternateBoard.cc@1@<file scope items>@T????@LOC:0 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/AlternateCellHighlight.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/AlternateHUD.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/AlternateMain.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/AlternatePlayerOnePiece.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/AlternatePlayerTwoPiece.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/AlternateRuleSet.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/DefaultBoard.cc@1@<file scope items>@T????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/DefaultHUD.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/DefaultRuleSet.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/Display.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/GameSimulator.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/GameSimulatorTestFixture.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/Main.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/PlayerOnePiece.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/PlayerTwoPiece.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/SelectedCellHighlight.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/Simulator.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../src/TestMain.cc@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@

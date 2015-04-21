@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Detailed report on module GameSimulator-->
+<CCCC_Project>
+<module_summary>
+<lines_of_code value="406" level="0" />
+<lines_of_code_per_member_function value="******" level="0" />
+<McCabes_cyclomatic_complexity value="106" level="0" />
+<McCabes_cyclomatic_complexity_per_member_function value="******" level="2" />
+<lines_of_code value="56" level="0" />
+<lines_of_code_per_member_function value="********" level="2" />
+<lines_of_code_per_line_of_comment value="7.250" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="1.893" level="0" />
+<weighted_methods_per_class_unity value="15" level="0" />
+<weighted_methods_per_class_visibility value="0" level="0" />
+<depth_of_inheritance_tree value="0" level="0" />
+<number_of_children value="0" level="0" />
+<coupling_between_objects value="6" level="0" />
+<IF4 value="64" level="0" />
+<IF4_per_member_function value="********" level="2" />
+<IF4_visible value="64" level="1" />
+<IF4_visible_per_member_function value="********" level="2" />
+<IF4_concrete value="0" level="0" />
+<IF4_concrete_per_member_function value="********" level="0" />
+</module_summary>
+<module_detail>
+</module_detail>
+<procedural_detail>
+<member_function>
+<name>GameSimulator(const Display &amp;,int)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="5" />
+</extent>
+<lines_of_code value="10" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>canSelectCell(int,int)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="262" />
+</extent>
+<lines_of_code value="51" level="1" />
+<McCabes_cyclomatic_complexity value="22" level="1" />
+<lines_of_comment value="8" level="0" />
+<lines_of_code_per_line_of_comment value="6.375" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="2.750" level="0" />
+</member_function>
+<member_function>
+<name>clickCell(int,int)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="174" />
+</extent>
+<lines_of_code value="54" level="1" />
+<McCabes_cyclomatic_complexity value="19" level="1" />
+<lines_of_comment value="15" level="0" />
+<lines_of_code_per_line_of_comment value="3.600" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="1.267" level="0" />
+</member_function>
+<member_function>
+<name>draw()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="29" />
+</extent>
+<lines_of_code value="64" level="1" />
+<McCabes_cyclomatic_complexity value="16" level="1" />
+<lines_of_comment value="5" level="0" />
+<lines_of_code_per_line_of_comment value="12.800" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="3.200" level="0" />
+</member_function>
+<member_function>
+<name>getPossibleMoves(PLAYER)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="338" />
+</extent>
+<lines_of_code value="93" level="1" />
+<McCabes_cyclomatic_complexity value="25" level="1" />
+<lines_of_comment value="21" level="0" />
+<lines_of_code_per_line_of_comment value="4.429" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="1.190" level="0" />
+</member_function>
+<member_function>
+<name>init()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="147" />
+</extent>
+<lines_of_code value="23" level="0" />
+<McCabes_cyclomatic_complexity value="6" level="0" />
+<lines_of_comment value="2" level="0" />
+<lines_of_code_per_line_of_comment value="11.500" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="3.000" level="0" />
+</member_function>
+<member_function>
+<name>postMove(bool)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="484" />
+</extent>
+<lines_of_code value="81" level="1" />
+<McCabes_cyclomatic_complexity value="18" level="1" />
+<lines_of_comment value="5" level="0" />
+<lines_of_code_per_line_of_comment value="16.200" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="3.600" level="0" />
+</member_function>
+<member_function>
+<name>setBoard(shared_ptr)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="117" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setHUD(shared_ptr)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="132" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setPlayerOnePiece(shared_ptr)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="122" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setPlayerTwoPiece(shared_ptr)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="127" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setRuleSet(shared_ptr)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="137" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setSelectedCellHighlight(shared_ptr)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="142" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>update(double)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="24" />
+</extent>
+<lines_of_code value="3" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>~GameSimulator()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../src/GameSimulator.cc" line="19" />
+</extent>
+<lines_of_code value="3" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+</procedural_detail>
+<structural_detail>
+<module>
+<name>GameSimulator</name>
+<client_module>
+<name>GameMouseListener</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../src/GameSimulator.cc" line="585" />
+</extent>
+<name>GameMouseMotionListener</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../src/GameSimulator.cc" line="617" />
+</extent>
+</client_module>
+<supplier_module>
+<name>Display</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../src/GameSimulator.cc" line="5" />
+</extent>
+<name>PLAYER</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="338" />
+</extent>
+<name>bool</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="484" />
+</extent>
+<name>shared_ptr</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="117" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="122" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="127" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="132" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="137" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../src/GameSimulator.cc" line="142" />
+</extent>
+</supplier_module>
+</module>
+</structural_detail>
+</CCCC_Project>
