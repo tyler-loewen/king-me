@@ -10,6 +10,7 @@
 #include "GameSimulatorTestFixture.h"
 #include "DefaultHUD.h"
 #include "SelectedCellHighlight.h"
+#include "DefaultRuleSet.h"
 
 int main()
 {
@@ -24,9 +25,12 @@ int main()
 
    std::shared_ptr<HighlightCellInterface> highlight_selected_ptr = std::make_shared<SelectedCellHighlight>();
 
+   std::shared_ptr<RuleSetInterface> rule_set_ptr = std::make_shared<DefaultRuleSet>();
+
    simulator->setBoard(board_ptr);
    simulator->setHUD(hud_ptr);
    simulator->setSelectedCellHighlight(highlight_selected_ptr);
+   simulator->setRuleSet(rule_set_ptr);
 
    std::shared_ptr<PieceInterface> player1_piece = std::make_shared<PlayerOnePiece>();
 

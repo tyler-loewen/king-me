@@ -14,11 +14,7 @@
 #include "PieceMove.h"
 #include "HUDInterface.h"
 #include "HighlightCellInterface.h"
-
-/**
- * An enum for all possible players (none, player 1, and player 2).
- */
-enum PLAYER { NONE, PLAYER1, PLAYER2 };
+#include "RuleSetInterface.h"
 
 /**
  * A struct containing data for every cell/tile on the game board.
@@ -184,6 +180,13 @@ class GameSimulator : public Simulator
    void setHUD(std::shared_ptr<HUDInterface> hud);
 
    /**
+    * Sets the rule set.
+    *
+    * @param rule_set - Shared pointer to the rule set.
+    */
+   void setRuleSet(std::shared_ptr<RuleSetInterface> rule_set);
+
+   /**
     * Sets the selected cell highlight.
     *
     * @param highlight - Shared pointer to the cell highlighter.
@@ -219,6 +222,11 @@ class GameSimulator : public Simulator
     * A shared pointer to the selected cell highlighter.
     */
    std::shared_ptr<HighlightCellInterface> selected_cell_highlight;
+
+   /**
+    * A shared pointer to the rule set.
+    */
+   std::shared_ptr<RuleSetInterface> rule_set;
 
    /**
     * The cell data for the board.

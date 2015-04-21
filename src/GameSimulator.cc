@@ -134,6 +134,11 @@ void GameSimulator::setHUD(std::shared_ptr<HUDInterface> hud)
    this->hud = hud;
 }
 
+void GameSimulator::setRuleSet(std::shared_ptr<RuleSetInterface> rule_set)
+{
+   this->rule_set = rule_set;
+}
+
 void GameSimulator::setSelectedCellHighlight(std::shared_ptr<HighlightCellInterface> highlight)
 {
    this->selected_cell_highlight = highlight;
@@ -197,9 +202,14 @@ void GameSimulator::clickCell(unsigned int cell_x, unsigned int cell_y)
       {
 	 if (possible_moves[i].jumped_pieces.size() > 0)
 	 {
-	    must_jump = true;
+	    bool is_king = this->cell_data[possible_moves[i].start_pos.x][possible_moves[i].start_pos.y].is_king;
 
-	    break;
+	    if (this->rule_set->mustMakeJumps(this->player_turn, is_king))
+	    {
+	       must_jump = true;
+
+	       break;
+	    }
 	 }
       }
 
@@ -263,6 +273,14 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y)
       return this->must_move_cell[0] == cell_x && this->must_move_cell[1] == cell_y;
    }
 
+   if (this->rule_set == NULL)
+   {
+      //We don't have any rules, so how can we know if we can select a cell? Let's just
+      //return false.
+
+      return false;
+   }
+
    BoardCellData cell_dat = this->cell_data[cell_x][cell_y];
 
    if (cell_dat.player != this->player_turn)
@@ -270,7 +288,7 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y)
       //The piece at this cell is not owned by the current player (or there is no piece there).
 
       this->status = "This isn't our piece.";
-      
+
       return false;
    }
 
@@ -283,9 +301,14 @@ bool GameSimulator::canSelectCell(unsigned int cell_x, unsigned int cell_y)
    {
       if (possible_moves[i].jumped_pieces.size() > 0)
       {
-	 must_jump = true;
+	 bool is_king = this->cell_data[possible_moves[i].start_pos.x][possible_moves[i].start_pos.y].is_king;
 
-	 break;
+	 if (this->rule_set->mustMakeJumps(cell_dat.player, is_king))
+	 {
+	    must_jump = true;
+
+	    break;
+	 }
       }
    }
 
@@ -321,6 +344,14 @@ std::vector<PieceMove> GameSimulator::getPossibleMoves(PLAYER player) const
    PLAYER opponent = player == PLAYER1 ? PLAYER2 : PLAYER1;
 
    std::vector<PieceMove> moves;
+
+   if (this->rule_set == NULL)
+   {
+      //We don't have any rules, so how should we know how to behave? Let's just return
+      //no moves.
+      
+      return moves;
+   }
    
    for (unsigned int x = 0; x < 8; x++)
    {
@@ -338,25 +369,22 @@ std::vector<PieceMove> GameSimulator::getPossibleMoves(PLAYER player) const
 
 	 std::vector<int> check_y_displacement;
 
-	 if (this->cell_data[x][y].is_king)
-	 {
-	    //The piece can move either up or down
+	 check_y_displacement.push_back(-1);
+	 check_y_displacement.push_back(1);
 
-	    check_y_displacement.push_back(-1);
-	    check_y_displacement.push_back(1);
+	 /**
+	  * Whether going backwards is moving up, or moving down on the game board
+	  * for the current player.
+	  */
+	 int backwards_displacement;
+
+	 if (this->cell_data[x][y].player == PLAYER1)
+	 {
+	    backwards_displacement = -1;
 	 }
 	 else
 	 {
-	    if (player == PLAYER1)
-	    {
-	       //The piece can move down
-	       check_y_displacement.push_back(1);
-	    }
-	    else
-	    {
-	       //The piece can move up
-	       check_y_displacement.push_back(-1);
-	    }
+	    backwards_displacement = 1;
 	 }
 
 	 for (unsigned int i = 0; i < check_y_displacement.size(); i++)
@@ -367,71 +395,83 @@ std::vector<PieceMove> GameSimulator::getPossibleMoves(PLAYER player) const
 	       continue;
 	    }
 
-	    //Let's check for moves to empty spaces (no jumping pieces).
+	    bool move_bckwd_no_jump = this->rule_set->canMoveBackwards(this->cell_data[x][y].player, this->cell_data[x][y].is_king, false);
 
-	    if (x > 0)
+	    //Check if either we aren't moving backwards, or if we are allowed to move backwards.
+	    if (check_y_displacement[i] != backwards_displacement || move_bckwd_no_jump)
 	    {
-	       if (this->cell_data[x - 1][new_y1].player == NONE)
-	       {
-		  UIntPoint start(x, y);
-		  UIntPoint end(x - 1, new_y1);
+	       //Let's check for moves to empty spaces (no jumping pieces).
 
-		  moves.push_back(PieceMove(start, end));
+	       if (x > 0)
+	       {
+		  if (this->cell_data[x - 1][new_y1].player == NONE)
+		  {
+		     UIntPoint start(x, y);
+		     UIntPoint end(x - 1, new_y1);
+
+		     moves.push_back(PieceMove(start, end));
+		  }
+	       }
+
+	       if (x < 7)
+	       {
+		  if (this->cell_data[x + 1][new_y1].player == NONE)
+		  {
+		     UIntPoint start(x, y);
+		     UIntPoint end(x + 1, new_y1);
+
+		     moves.push_back(PieceMove(start, end));
+		  }
 	       }
 	    }
 
-	    if (x < 7)
-	    {
-	       if (this->cell_data[x + 1][new_y1].player == NONE)
-	       {
-		  UIntPoint start(x, y);
-		  UIntPoint end(x + 1, new_y1);
+	    bool move_bckwd_jump = this->rule_set->canMoveBackwards(this->cell_data[x][y].player, this->cell_data[x][y].is_king, true);
 
-		  moves.push_back(PieceMove(start, end));
-	       }
-	    }
-	    
-	    //Let's check for piece jumps.
-	    
-	    unsigned int new_y2 = y + check_y_displacement[i] * 2; //The tile (y) to land on
-	    if (new_y2 >= 8)
+	    //Check if either we aren't moving backwards, or if we are allowed to move backwards.
+	    if (check_y_displacement[i] != backwards_displacement || move_bckwd_jump)
 	    {
-	       //We don't have to check for negatives since new_y is unsigned.
+	       //Let's check for piece jumps.
+	    
+	       unsigned int new_y2 = y + check_y_displacement[i] * 2; //The tile (y) to land on
+	       if (new_y2 >= 8)
+	       {
+		  //We don't have to check for negatives since new_y is unsigned.
 	       
-	       continue;
-	    }
-	    
-	    if (x > 1)
-	    {
-	       if (this->cell_data[x - 1][new_y1].player == opponent && this->cell_data[x - 2][new_y2].player == NONE)
-	       {
-		  //Found a jump to the left
-
-		  UIntPoint start(x, y);
-		  UIntPoint end(x - 2, new_y2);
-
-		  PieceMove move(start, end);
-
-		  move.jumped_pieces.push_back(UIntPoint(x - 1, new_y1));
-
-		  moves.push_back(move);
+		  continue;
 	       }
-	    }
-
-	    if (x < 6)
-	    {
-	       if (this->cell_data[x + 1][new_y1].player == opponent && this->cell_data[x + 2][new_y2].player == NONE)
+	    
+	       if (x > 1)
 	       {
-		  //Found a jump to the right
+		  if (this->cell_data[x - 1][new_y1].player == opponent && this->cell_data[x - 2][new_y2].player == NONE)
+		  {
+		     //Found a jump to the left
 
-		  UIntPoint start(x, y);
-		  UIntPoint end(x + 2, new_y2);
+		     UIntPoint start(x, y);
+		     UIntPoint end(x - 2, new_y2);
 
-		  PieceMove move(start, end);
+		     PieceMove move(start, end);
 
-		  move.jumped_pieces.push_back(UIntPoint(x + 1, new_y1));
+		     move.jumped_pieces.push_back(UIntPoint(x - 1, new_y1));
 
-		  moves.push_back(move);
+		     moves.push_back(move);
+		  }
+	       }
+
+	       if (x < 6)
+	       {
+		  if (this->cell_data[x + 1][new_y1].player == opponent && this->cell_data[x + 2][new_y2].player == NONE)
+		  {
+		     //Found a jump to the right
+
+		     UIntPoint start(x, y);
+		     UIntPoint end(x + 2, new_y2);
+
+		     PieceMove move(start, end);
+
+		     move.jumped_pieces.push_back(UIntPoint(x + 1, new_y1));
+
+		     moves.push_back(move);
+		  }
 	       }
 	    }
 	 }
