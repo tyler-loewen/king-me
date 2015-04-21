@@ -16,6 +16,11 @@ class GameSimulatorTestFixture : public CppUnit::TestFixture
    CPPUNIT_TEST_SUITE(GameSimulatorTestFixture);
    CPPUNIT_TEST(testClickCell);
    CPPUNIT_TEST_EXCEPTION(testClickCellOutOfBounds, std::out_of_range);
+   CPPUNIT_TEST(testMove);
+   CPPUNIT_TEST(testTurnSwitch);
+   CPPUNIT_TEST(testJump);
+   CPPUNIT_TEST(testKinging);
+   CPPUNIT_TEST(testVictory);
    CPPUNIT_TEST_SUITE_END();
    
   public:
@@ -40,6 +45,31 @@ class GameSimulatorTestFixture : public CppUnit::TestFixture
     * Tests a cell click with illegal inputs. This should result in an std::out_of_range exception.
     */
    void testClickCellOutOfBounds();
+
+   /**
+    * Tests moving a piece.
+    */
+   void testMove();
+
+   /**
+    * Tests for turn switching after a move has been made.
+    */
+   void testTurnSwitch();
+
+   /**
+    * Tests if we can jump a piece, and checks if the pieces captured variable increments.
+    */
+   void testJump();
+
+   /**
+    * Checks if moving a piece to the end of the board (opposite side) turns the piece into a king.
+    */
+   void testKinging();
+
+   /**
+    * Tests for a victory for player one. The status should change to "VICTORY FOR PLAYER 1!" when player 1 wins.
+    */
+   void testVictory();
   private:
    /**
     * Pointer to the display object used in every test case.
